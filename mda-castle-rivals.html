@@ -329,13 +329,13 @@
   <header>
     <div class="mono">Doc nội bộ &nbsp;|&nbsp; Quan sát → đề xuất</div>
     <h1>Mở rộng dynamic core</h1>
-    <p class="lead">Trên luật, 6 dynamic core có nhiều biến thể. Người chơi thấy ít hơn: <b>một biến thể của D2 là kéo sập ô có hero có thể áp đảo cả D3, D4 và D5</b> (I). Tab này tách từng dynamic thành biến và biến thể, rồi đề xuất cách mở không gian cảm nhận.</p>
+    <p class="lead">Trên luật, 6 dynamic core có nhiều lựa chọn. Người chơi thấy ít hơn: <b>một lựa chọn của D2 là kéo sập ô có hero có thể áp đảo cả D3, D4 và D5</b> (I). Tab này tách từng dynamic thành mechanic và lựa chọn, rồi đề xuất cách mở không gian cảm nhận.</p>
   </header>
 
   <section id="s2">
     <div class="sec-head">
       <h2><span class="no">2.</span>Mở rộng dynamic core</h2>
-      <p class="sub">Biến lấy từ code nên là F. Biến thể và đề xuất là suy luận, nên là I.</p>
+      <p class="sub">Mechanic lấy từ code nên là F. Lựa chọn và đề xuất là suy luận, nên là I.</p>
     </div>
 
     <!-- ---------- 2.1 ---------- -->
@@ -344,13 +344,13 @@
       <table>
         <thead><tr><th>Bước</th><th>Làm gì</th></tr></thead>
         <tbody>
-          <tr><td>1. Biến</td><td>Liệt kê mechanic làm đổi cách chơi lối này</td></tr>
-          <tr><td>2. Biến thể</td><td>Ghi các cách chơi cụ thể người chơi chọn được, sinh ra từ tổ hợp giá trị của biến</td></tr>
-          <tr><td>3. Đánh giá</td><td>Hỏi từng biến thể: <i>"Khi nào đây là cách tốt nhất?"</i></td></tr>
+          <tr><td>1. Mechanic</td><td>Liệt kê mechanic làm đổi cách chơi lối này</td></tr>
+          <tr><td>2. Lựa chọn</td><td>Ghi các lựa chọn cụ thể người chơi có, sinh ra từ các giá trị của mechanic</td></tr>
+          <tr><td>3. Đánh giá</td><td>Hỏi từng lựa chọn: <i>"Khi nào đây là cách tốt nhất?"</i></td></tr>
           <tr><td>4. Mở rộng</td><td>Đề xuất cách mở không gian cảm nhận bằng 4 công cụ: determinism (tất định), transitivity (bắc cầu), information (thông tin), symmetry (đối xứng)</td></tr>
         </tbody>
       </table>
-      <p class="table-note">Đây là cách đọc nội bộ của doc, không phải framework chuẩn. "Biến" và "biến thể" là từ doc tự dùng. <b>Đánh giá:</b> <b>Thú vị</b> là tốt nhất ở một số tình huống. <span class="key">Áp đảo</span> là gần như luôn tốt nhất. <b>Gần bị áp đảo</b> là chỉ tốt nhất trong tình huống rất hẹp, vì có biến thể khác làm cùng việc tốt hơn. <b>Cột "Cần":</b> Core là chơi được chỉ với mechanic core; Phụ trợ là cần thêm hero hoặc spell.</p>
+      <p class="table-note">Đây là cách đọc nội bộ của doc, không phải framework chuẩn. <b>Đánh giá:</b> <b>Thú vị</b> là tốt nhất ở một số tình huống. <span class="key">Áp đảo</span> là gần như luôn tốt nhất. <b>Gần bị áp đảo</b> là chỉ tốt nhất trong tình huống rất hẹp, vì có lựa chọn khác làm cùng việc tốt hơn. <b>Cột "Cần":</b> Core là chơi được chỉ với mechanic core; Phụ trợ là cần thêm hero hoặc spell.</p>
     </div>
 
     <div class="table-wrap" style="margin-top:14px">
@@ -380,7 +380,7 @@
     <h3 class="sub-title sub-block" id="s2-2"><span class="no">2.2</span>D1 Đọc gió, chỉnh dần: không gian thật đủ, người mới thiếu thông tin</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Mechanic</th><th>Giá trị</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Gió</td><td>Đổi mỗi lượt. Lực gió tăng theo arena, từ 1–12 lên 2–20 m/s²</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Lực bắn</td><td>Cố định. Chỉ chỉnh hướng và góc nâng</td><td><span class="fi f">F</span></td></tr>
@@ -392,7 +392,7 @@
     </div>
     <div class="table-wrap vt" style="margin-top:14px">
       <table>
-        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Lựa chọn</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Bắn dò rồi chỉnh</td><td>Gió mạnh, mục tiêu lớn, còn nhiều lượt</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Bù theo số gió</td><td>Người chơi đã quen độ lệch ở từng mức gió</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
@@ -405,10 +405,10 @@
     </div>
 
     <!-- ---------- 2.3 D2 ---------- -->
-    <h3 class="sub-title sub-block" id="s2-3"><span class="no">2.3</span>D2 Đánh móng: biến thể kéo sập ô có hero áp đảo</h3>
+    <h3 class="sub-title sub-block" id="s2-3"><span class="no">2.3</span>D2 Đánh móng: lựa chọn kéo sập ô có hero áp đảo</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Mechanic</th><th>Giá trị</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Cấu trúc</td><td>Lưới 3×3 cột, mỗi cột cao tối đa 3 tầng. Mỗi ô (cell) là một đơn vị sập</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Ngưỡng sập</td><td>Cell còn ≤35% HP thì sập, và thành mất luôn phần HP còn lại của cell</td><td><span class="fi f">F</span></td></tr>
@@ -421,7 +421,7 @@
     </div>
     <div class="table-wrap vt" style="margin-top:14px">
       <table>
-        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Lựa chọn</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Kéo sập ô có hero</td><td>Gần như luôn: cùng lúc trừ HP thành, hạ hero, mở đường cho phát sau</td><td>Core</td><td class="lean"><span class="key">Áp đảo</span></td><td><span class="fi f">F luật</span><span class="fi i">I hành vi</span></td></tr>
           <tr><td>Kéo sập cột cao không có hero</td><td>Hero đứng ở chỗ khó với tới</td><td>Core</td><td class="lean even">Gần bị áp đảo</td><td><span class="fi i">I</span></td></tr>
@@ -431,14 +431,14 @@
           <tr><td>Mài dần qua nhiều lượt</td><td>Cell nhiều HP, còn nhiều lượt</td><td>Phụ trợ: Fire, Plague</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
         </tbody>
       </table>
-      <p class="table-note"><b>Bằng chứng:</b> Smart AI chấm điểm ô thấp ×4, gần hero ×3, cộng điểm "floor shot". Bot được dạy đúng biến thể áp đảo. <b>Mở rộng:</b> đổi một quan hệ để biến thể này không còn làm 3 việc cùng lúc. Xem 2.8.</p>
+      <p class="table-note"><b>Bằng chứng:</b> Smart AI chấm điểm ô thấp ×4, gần hero ×3, cộng điểm "floor shot". Bot được dạy đúng lựa chọn áp đảo. <b>Mở rộng:</b> đổi một quan hệ để lựa chọn này không còn làm 3 việc cùng lúc. Xem 2.8.</p>
     </div>
 
     <!-- ---------- 2.4 D3 ---------- -->
-    <h3 class="sub-title sub-block" id="s2-4"><span class="no">2.4</span>D3 Săn hero: bị biến thể kéo sập ô áp đảo</h3>
+    <h3 class="sub-title sub-block" id="s2-4"><span class="no">2.4</span>D3 Săn hero: bị lựa chọn kéo sập ô áp đảo</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Mechanic</th><th>Giá trị</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Trúng thẳng</td><td>Không giảm theo khoảng cách, không bị chắn</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Nổ gần</td><td>Giảm dần từ tâm nổ ra mép. Có block nguyên chắn giữa thì còn 20%</td><td><span class="fi f">F</span></td></tr>
@@ -449,7 +449,7 @@
     </div>
     <div class="table-wrap vt" style="margin-top:14px">
       <table>
-        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Lựa chọn</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Trúng thẳng hero đứng lộ</td><td>Hero ở tầng cao, không có gì che</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Hạ hero yếu máu trước</td><td>Hero còn ít HP, đứng lộ</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
@@ -464,7 +464,7 @@
     <h3 class="sub-title sub-block" id="s2-5"><span class="no">2.5</span>D4 Phá thành: kéo sập có thể rẻ hơn bào HP</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Mechanic</th><th>Giá trị</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>HP thành</td><td>Tổng HP các cell. UI hiện %</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Thưởng khi sập</td><td>Cell sập mất luôn phần HP còn lại (≤35%). Cell treo phía trên mất đỡ thì sập theo</td><td><span class="fi f">F</span></td></tr>
@@ -474,7 +474,7 @@
     </div>
     <div class="table-wrap vt" style="margin-top:14px">
       <table>
-        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Lựa chọn</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Bỏ hero, dồn hết vào thành</td><td>HP thành địch đã thấp, hero địch núp kỹ</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Bào HP trực diện</td><td>Không có ô nào gần ngưỡng sập</td><td>Core</td><td class="lean even">Gần bị áp đảo</td><td><span class="fi i">I</span></td></tr>
@@ -488,7 +488,7 @@
     <h3 class="sub-title sub-block" id="s2-6"><span class="no">2.6</span>D5 Phá lớp che: đáng làm khi không kéo sập được ô dưới hero</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Mechanic</th><th>Giá trị</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Chắn</td><td>Chỉ tính block nguyên gần nhất. Block đã vỡ rời không chắn nữa</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Damage sau chắn</td><td>Còn 20%</td><td><span class="fi f">F</span></td></tr>
@@ -499,7 +499,7 @@
     </div>
     <div class="table-wrap vt" style="margin-top:14px">
       <table>
-        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Lựa chọn</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Bắn góc cao, rơi trúng thẳng</td><td>Hero ở tầng trên, phía trên không có gì che</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Dùng đạn xuyên</td><td>Hero sau nhiều lớp tường</td><td>Phụ trợ: Boomerang, Phantom, Beam</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
@@ -514,7 +514,7 @@
     <h3 class="sub-title sub-block" id="s2-7"><span class="no">2.7</span>D6 Giữ thành: core không có hành động thủ, chỉ có đua % HP</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Mechanic</th><th>Giá trị</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Giới hạn lượt</td><td>18–24 lượt tính cả hai bên, theo arena. Banner "3 / 2 / LAST" ở 3 lượt cuối</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Hết lượt</td><td>So % HP thành. Hòa tính người chơi thua. Không có sudden death</td><td><span class="fi f">F</span></td></tr>
@@ -525,7 +525,7 @@
     </div>
     <div class="table-wrap vt" style="margin-top:14px">
       <table>
-        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <thead><tr><th>Lựa chọn</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Đang dẫn % HP: bắn chắc</td><td>Gần hết lượt, dẫn ít</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Đang thua: bắn rủi ro</td><td>Gần hết lượt, đang thua</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
