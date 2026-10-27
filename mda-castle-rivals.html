@@ -135,6 +135,7 @@
 <div class="tabbar" role="tablist" aria-label="Phần phân tích">
   <button type="button" role="tab" id="tab-mda" aria-controls="page-mda" aria-selected="true">MDA</button>
   <button type="button" role="tab" id="tab-core" aria-controls="page-core" aria-selected="false" tabindex="-1">Mở rộng dynamic core</button>
+  <button type="button" role="tab" id="tab-units" aria-controls="page-units" aria-selected="false" tabindex="-1">Nhân vật &amp; spell</button>
 </div>
 
 <div class="page is-active" id="page-mda">
@@ -159,7 +160,7 @@
   <header>
     <div class="mono">Doc nội bộ &nbsp;|&nbsp; Phân tích game design</div>
     <h1>MDA — Castle Rivals</h1>
-    <p class="lead">Castle Rivals giao <b>Sensation</b> rất tốt: mỗi phát trúng móng kéo sập cả cột thành. Nhưng cảm giác <b>đấu với người</b> dựng trên 100% bot, và ba lối chơi chính đang gộp thành một phát bắn duy nhất.</p>
+    <p class="lead">Castle Rivals giao <b>Sensation</b> rất tốt: mỗi phát trúng móng kéo sập cả cột thành. Nhưng cảm giác <b>đấu với người</b> dựng trên 100% bot, và bốn lối chơi chính có thể đang gộp thành một phát bắn duy nhất (I, cần đo).</p>
   </header>
 
   <!-- ============ 1. CASTLE RIVALS ============ -->
@@ -207,12 +208,12 @@
       </div>
     </details>
 
-    <p class="meta">Cả 12 dòng đều là <span class="fi f">F</span>. Số trận đếm cả trận tutorial: trận 1 là tutorial (bắn thành bia, AI không có lượt, không giới hạn lượt), trận đấu bot đầu tiên là trận 2. <b style="color:var(--navy)">So với outline ban đầu</b> (Drag, Turn base, Chỉnh hướng): "Chỉnh hướng" nằm trong Drag, và còn thiếu 4 core là gió, damage, luật sập, điều kiện thắng.</p>
+    <p class="meta">Luật trong cả 12 dòng đều là <span class="fi f">F</span>. Các nhận định đi kèm là <span class="fi i">I</span>: "biến khó chính" (Gió), "core của meta và IAP" (Chọn hero), "bánh xe tập" (Trajectory preview). Số trận đếm cả trận tutorial: trận 1 là tutorial (bắn thành bia, AI không có lượt, không giới hạn lượt), trận đấu bot đầu tiên là trận 2. <b style="color:var(--navy)">So với outline ban đầu</b> (Drag, Turn base, Chỉnh hướng): "Chỉnh hướng" nằm trong Drag, và còn thiếu 4 core là gió, damage, luật sập, điều kiện thắng.</p>
 
     <!-- ---------- 1.2 Dynamic ---------- -->
-    <h3 class="sub-title sub-block" id="s1-2"><span class="no">1.2</span>Dynamic: 11 lối chơi, 3 lối gộp làm một</h3>
+    <h3 class="sub-title sub-block" id="s1-2"><span class="no">1.2</span>Dynamic: 10 lối chơi và 1 hành vi hệ thống, 4 lối gộp làm một</h3>
 
-    <p class="tbl-label"><b>Core · 6</b><span>Sinh ra từ mechanic core, có ở mọi trận.</span></p>
+    <p class="tbl-label"><b>Core · 6</b><span>Sinh ra từ mechanic core, có ở mọi trận. Cách chia nội bộ của doc.</span></p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Dynamic</th><th>Lối chơi</th><th>Sinh ra từ</th><th>Bằng chứng</th><th>F/I</th></tr></thead>
@@ -228,7 +229,7 @@
     </div>
 
     <details class="aux">
-      <summary><b>Phụ trợ · 5</b><span>Sinh ra từ mechanic phụ trợ: hero, spell, perk, meta, bot.</span><span class="chev"><span class="o">Xem</span><span class="c">Thu lại</span></span></summary>
+      <summary><b>Phụ trợ · 5</b><span>Sinh ra từ mechanic phụ trợ: hero, spell, perk, meta, bot. Cách chia nội bộ của doc.</span><span class="chev"><span class="o">Xem</span><span class="c">Thu lại</span></span></summary>
       <div class="table-wrap">
       <table>
         <thead><tr><th>Dynamic</th><th>Lối chơi</th><th>Sinh ra từ</th><th>Bằng chứng</th><th>F/I</th></tr></thead>
@@ -236,10 +237,10 @@
           <tr class="grp"><td colspan="5">Trong trận</td></tr>
           <tr><td>D7</td><td><b>Chọn hero theo bài toán.</b> Đổi sang đạn hợp tình huống: khoan, xuyên tường, tia thẳng…</td><td>Đổi hero miễn phí, mỗi hero 1 kiểu đạn</td><td>16 vũ khí chia 5 vai trò</td><td><span class="fi i">I</span></td></tr>
           <tr><td>D8</td><td><b>Canh lượt tung spell.</b></td><td>Spell 1 lần / trận</td><td>—</td><td><span class="fi i">I</span></td></tr>
-          <tr><td>D9</td><td><b>Bắn perk hay bắn thành.</b> Cơ hội lớn đổi lấy phát chắc chắn.</td><td>Center Perk giữa sân</td><td>Bot không nhắm perk: perk là lợi thế riêng của người có kỹ năng. Perk chỉ có ở khoảng 25% số lượt</td><td><span class="fi f">F bot</span><span class="fi i">I người</span></td></tr>
+          <tr><td>D9</td><td><b>Bắn perk hay bắn thành.</b> Cơ hội lớn đổi lấy phát chắc chắn.</td><td>Center Perk giữa sân</td><td>Bot không nhắm perk. Vì vậy perk có thể là lợi thế riêng của người có kỹ năng. Perk chỉ có ở khoảng 25% số lượt</td><td><span class="fi f">F bot</span><span class="fi i">I người</span></td></tr>
           <tr class="grp"><td colspan="5">Ngoài trận</td></tr>
           <tr><td>D10</td><td><b>Công hay thủ ở meta.</b> Nâng hero hay nâng thành.</td><td>Hero Upgrade, Castle Upgrade dùng chung Coin</td><td>Luật có</td><td><span class="fi f">F</span></td></tr>
-          <tr><td>D11</td><td><b>Trận "vừa sức" có chủ đích.</b> Thua chuỗi thì bot yếu đi, thắng chuỗi thì bot mạnh lên.</td><td>Shadow Trophy, 4 trận đầu luôn tính thắng</td><td>Người chơi không thấy dynamic này</td><td><span class="fi f">F luật</span></td></tr>
+          <tr><td>D11</td><td><b>Trận "vừa sức" có chủ đích.</b> Thua chuỗi thì bot yếu đi, thắng chuỗi thì bot mạnh lên.</td><td>Shadow Trophy, 4 trận đầu luôn tính thắng</td><td>Hành vi hệ thống, không phải lối chơi: người chơi không thấy và không chọn được</td><td><span class="fi f">F luật</span></td></tr>
         </tbody>
       </table>
       </div>
@@ -248,14 +249,16 @@
     <div class="verdict one">
       <div>
         <span class="mono">Phát hiện chính &nbsp;·&nbsp; I, cần đo</span>
-        <h3>D2, D3, D4 gộp thành một phát: đánh móng dưới hero.</h3>
+        <h3>D2, D3, D4, D5 gộp thành một phát: đánh móng dưới hero.</h3>
         <p>Hero chết ngay khi ô dưới chân sập. Vì vậy một phát bắn vào móng ô có hero đứng làm cùng lúc 3 việc: <b>trừ HP thành, hạ hero, mở đường cho phát sau</b>. Smart AI của Castle Rivals ưu tiên đúng phát này (điểm "gần hero ×3" + "floor shot").</p>
+        <p>Lớp che chỉ chặn vụ nổ, không chặn luật sập. Vì vậy phá lớp che rồi mới hạ hero (D5) cũng ít khi cần. Chi tiết ở tab Mở rộng dynamic core.</p>
         <p>Game cạnh tranh cân bằng là game "không có chiến thuật nào vốn dĩ tốt hơn". Ở đây "focus hero" và "focus công trình" có khả năng không còn là hai lựa chọn khác nhau.</p>
       </div>
     </div>
 
     <!-- ---------- 1.3 Aesthetic ---------- -->
     <h3 class="sub-title sub-block" id="s1-3"><span class="no">1.3</span>Aesthetic: mạnh ở Sensation, yếu ở Fellowship</h3>
+    <p class="meta" style="margin:0 0 14px">Mức mạnh / yếu là đánh giá của doc, chưa có dữ liệu người chơi. Riêng Competition và Fellowship dựa trên dữ liệu <span class="fi f">F</span>: đối thủ là bot, chỉ có emote.</p>
     <div class="score" style="margin-top:0; margin-bottom:18px">
       <div><span class="num">Sensation</span><p><b>Mạnh nhất.</b> Thành sập là promise của store và creative.</p></div>
       <div><span class="num lose">Competition</span><p><b>Giả.</b> Đối thủ là bot, 4 trận đầu luôn thắng, độ khó bị chỉnh ẩn.</p></div>
@@ -285,14 +288,14 @@
       <table>
         <thead><tr><th>Game tham chiếu</th><th>Bài học</th><th>Castle Rivals</th><th>Đánh giá</th></tr></thead>
         <tbody>
-          <tr><td>Paper Toss</td><td>Lực cố định, chỉ chọn hướng, lộ hết gió: vẫn đủ hấp dẫn</td><td>Lực cố định, gió hiện số + màu</td><td class="lean">Hợp</td></tr>
+          <tr><td>Paper Toss</td><td>Lực cố định, chỉ chọn hướng, lộ hết gió: đủ hấp dẫn cho game ngắn, nhưng làm chủ rồi thì thành tầm thường</td><td>Lực cố định, gió hiện số + màu</td><td class="lean even">Hợp, có rủi ro</td></tr>
           <tr><td>Paper Toss</td><td>Tăng độ khó bằng cách kéo dài thời gian vật lý tác động, không thêm luật</td><td>Lực gió tăng theo arena (1–12 → 2–20)</td><td class="lean">Hợp</td></tr>
           <tr><td>Peggle</td><td>Lộ quỹ đạo đoạn đầu để người chơi kiểm soát, phần sau để hỗn loạn cho vui</td><td>Tắt preview từ trận 3</td><td class="lean"><span class="key">Rủi ro</span></td></tr>
           <tr><td>Jenga</td><td>Cắt thẳng tới kịch tính sụp đổ</td><td>Trận tutorial bắn vào thành bia có gắn sẵn dynamite: ô sập thì dynamite nổ, thấy chain reaction ngay</td><td class="lean">Hợp</td></tr>
           <tr><td>Nguyên tắc chung</td><td>Tinh chỉnh vật lý cho vui, không cho thật</td><td>Thành sập theo ngưỡng HP, mảnh vỡ chỉ để nhìn, không gây damage</td><td class="lean">Hợp</td></tr>
         </tbody>
       </table>
-      <p class="table-note">Rủi ro ở dòng Peggle: vật lý quá mờ đục tạo cảm giác "bị phạt, bất công". Gió tới 20 m/s² mà không có đường ngắm là chỗ dễ gây churn (I).</p>
+      <p class="table-note">Cột Đánh giá là nhận định của doc <span class="fi i">I</span>. Rủi ro ở dòng Paper Toss đầu: người chơi đã quen bù gió thì ngắm thành tầm thường; gió tăng theo arena (dòng thứ hai) là cách Castle Rivals giữ độ khó. Rủi ro ở dòng Peggle: vật lý quá mờ đục tạo cảm giác "bị phạt, bất công". Gió tới 20 m/s² mà không có đường ngắm là chỗ dễ gây churn (I).</p>
     </div>
   </section>
 
@@ -326,7 +329,7 @@
   <header>
     <div class="mono">Doc nội bộ &nbsp;|&nbsp; Quan sát → đề xuất</div>
     <h1>Mở rộng dynamic core</h1>
-    <p class="lead">Trên luật, 6 dynamic core có nhiều biến thể. Người chơi thấy ít hơn: <b>một biến thể của D2 là kéo sập ô có hero nuốt cả D3, D4 và D5</b>. Tab này tách từng dynamic thành biến và biến thể, rồi đề xuất cách mở không gian cảm nhận.</p>
+    <p class="lead">Trên luật, 6 dynamic core có nhiều biến thể. Người chơi thấy ít hơn: <b>một biến thể của D2 là kéo sập ô có hero có thể áp đảo cả D3, D4 và D5</b> (I). Tab này tách từng dynamic thành biến và biến thể, rồi đề xuất cách mở không gian cảm nhận.</p>
   </header>
 
   <section id="s2">
@@ -336,7 +339,7 @@
     </div>
 
     <!-- ---------- 2.1 ---------- -->
-    <h3 class="sub-title sub-block" id="s2-1"><span class="no">2.1</span>Cách đọc: biến → biến thể → đánh giá → mở rộng</h3>
+    <h3 class="sub-title sub-block" id="s2-1"><span class="no">2.1</span>Cách đọc tab này</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Bước</th><th>Làm gì</th></tr></thead>
@@ -344,10 +347,10 @@
           <tr><td>1. Biến</td><td>Liệt kê mechanic làm đổi cách chơi lối này</td></tr>
           <tr><td>2. Biến thể</td><td>Ghi các cách chơi cụ thể người chơi chọn được, sinh ra từ tổ hợp giá trị của biến</td></tr>
           <tr><td>3. Đánh giá</td><td>Hỏi từng biến thể: <i>"Khi nào đây là cách tốt nhất?"</i></td></tr>
-          <tr><td>4. Mở rộng</td><td>Đề xuất cách mở không gian cảm nhận bằng 4 công cụ: determinism, transitivity, information, symmetry</td></tr>
+          <tr><td>4. Mở rộng</td><td>Đề xuất cách mở không gian cảm nhận bằng 4 công cụ: determinism (tất định), transitivity (bắc cầu), information (thông tin), symmetry (đối xứng)</td></tr>
         </tbody>
       </table>
-      <p class="table-note"><b>Đánh giá:</b> <b>Thú vị</b> là tốt nhất ở một số tình huống. <span class="key">Áp đảo</span> là gần như luôn tốt nhất. <b>Bị nuốt</b> là có biến thể khác làm cùng việc tốt hơn. <b>Cột "Cần":</b> Core là chơi được chỉ với mechanic core; Phụ trợ là cần thêm hero hoặc spell.</p>
+      <p class="table-note">Đây là cách đọc nội bộ của doc, không phải framework chuẩn. "Biến" và "biến thể" là từ doc tự dùng. <b>Đánh giá:</b> <b>Thú vị</b> là tốt nhất ở một số tình huống. <span class="key">Áp đảo</span> là gần như luôn tốt nhất. <b>Gần bị áp đảo</b> là chỉ tốt nhất trong tình huống rất hẹp, vì có biến thể khác làm cùng việc tốt hơn. <b>Cột "Cần":</b> Core là chơi được chỉ với mechanic core; Phụ trợ là cần thêm hero hoặc spell.</p>
     </div>
 
     <div class="table-wrap" style="margin-top:14px">
@@ -361,15 +364,15 @@
           <tr><td>Nhịp</td><td>Lượt này hay lượt sau?</td><td>Không có. Chỉ có ở vũ khí phụ trợ (Storm Orb, Time Bomb, Fire, Plague)</td></tr>
         </tbody>
       </table>
-      <p class="table-note">Core chỉ phủ 3/5 trục, và 4/6 dynamic core nằm chung trục Mục tiêu. Vì vậy chỉ cần trục Mục tiêu hẹp là cả core hẹp theo.</p>
+      <p class="table-note">5 trục là cách chia nội bộ của doc, chưa chốt. Theo cách chia này, core chỉ phủ 3/5 trục, và 4/6 dynamic core nằm chung trục Mục tiêu. Vì vậy chỉ cần trục Mục tiêu hẹp là cả core hẹp theo <span class="fi i">I</span>.</p>
     </div>
 
     <div class="verdict one">
       <div>
         <span class="mono">Phát hiện chính &nbsp;·&nbsp; F luật, I hành vi</span>
-        <h3>Kéo sập ô có hero nuốt 3 dynamic, không chỉ 2.</h3>
-        <p>Tab MDA thấy D2, D3, D4 gộp làm một. Tách biến ra thì thấy thêm <b>D5 cũng bị nuốt</b>. Hero sau tường được che khỏi vụ nổ, nhưng không được che khỏi luật sập. Mỗi hero bắt buộc đứng trên 1 ô đã xây, nên ô nào có hero cũng kéo sập được.</p>
-        <p>Thêm vào đó, cell sập còn làm thành mất luôn phần HP còn lại (tới 35%). Nghĩa là kéo sập luôn rẻ hơn bào HP trực diện.</p>
+        <h3>Kéo sập ô có hero có thể áp đảo D3, D4 và D5.</h3>
+        <p>Hero sau tường được che khỏi vụ nổ, nhưng không được che khỏi luật sập. Mỗi hero bắt buộc đứng trên 1 ô đã xây, nên ô nào có hero cũng kéo sập được.</p>
+        <p>Cell sập còn làm thành mất luôn phần HP còn lại, tới 35% (F). Vì vậy kéo sập nhiều khả năng rẻ hơn bào HP trực diện (I, cần số HP cell và damage để kiểm).</p>
       </div>
     </div>
 
@@ -393,12 +396,12 @@
         <tbody>
           <tr><td>Bắn dò rồi chỉnh</td><td>Gió mạnh, mục tiêu lớn, còn nhiều lượt</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Bù theo số gió</td><td>Người chơi đã quen độ lệch ở từng mức gió</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
-          <tr><td>Góc thấp: bay ngắn, ít ăn gió</td><td>Gió mạnh, đường bay không bị tường chắn</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
-          <tr><td>Góc cao: vượt tường, ăn gió nhiều</td><td>Mục tiêu sau tường, gió yếu</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Góc thấp: bay ngắn, ít ăn gió</td><td>Gió mạnh, đường bay không bị tường chắn</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I cần kiểm</span></td></tr>
+          <tr><td>Góc cao: vượt tường, ăn gió nhiều</td><td>Mục tiêu sau tường, gió yếu</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I cần kiểm</span></td></tr>
           <tr><td>Né gió bằng đạn không ăn gió</td><td>Gió rất mạnh</td><td>Phụ trợ: Beam, Time Bomb</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
         </tbody>
       </table>
-      <p class="table-note"><b>Mở rộng (đề xuất):</b> preview ngắn, không tính gió (Information). Không có preview, quyết định ngắm của người mới thành <i>impossible</i>: họ chọn bừa. Hai góc cùng chạm một điểm là suy từ lực cố định, cần kiểm trong build. Đánh đổi góc thấp / góc cao là chỗ D1 nối sang D5.</p>
+      <p class="table-note"><b>Mở rộng (đề xuất):</b> preview ngắn, không tính gió (công cụ Information: thông tin). Không có preview, quyết định ngắm của người mới quá khó để quyết: họ chọn bừa. Hai góc cùng chạm một điểm là suy từ lực cố định, cần kiểm trong build. Mặt trong của cell có bắn tới được không cũng cần kiểm. Đánh đổi góc thấp / góc cao là chỗ D1 nối sang D5.</p>
     </div>
 
     <!-- ---------- 2.3 D2 ---------- -->
@@ -421,9 +424,9 @@
         <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Kéo sập ô có hero</td><td>Gần như luôn: cùng lúc trừ HP thành, hạ hero, mở đường cho phát sau</td><td>Core</td><td class="lean"><span class="key">Áp đảo</span></td><td><span class="fi f">F luật</span><span class="fi i">I hành vi</span></td></tr>
-          <tr><td>Kéo sập cột cao không có hero</td><td>Hero đứng ở chỗ khó với tới</td><td>Core</td><td class="lean even">Bị nuốt</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Kéo sập cột cao không có hero</td><td>Hero đứng ở chỗ khó với tới</td><td>Core</td><td class="lean even">Gần bị áp đảo</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Hạ cell đỡ bên cạnh xuống dưới 50%</td><td>Bên cạnh có cell treo nhiều tầng</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
-          <tr><td>Bóc mặt ngoài để lộ mặt trong yếu</td><td>Hàng trước đã vỡ</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Bóc mặt ngoài để lộ mặt trong yếu</td><td>Hàng trước đã vỡ</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I cần kiểm</span></td></tr>
           <tr><td>Cắt hàng đáy, khoan sâu</td><td>Nhiều cell tầng dưới cùng hàng</td><td>Phụ trợ: Saw, Drill, Earthquake</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Mài dần qua nhiều lượt</td><td>Cell nhiều HP, còn nhiều lượt</td><td>Phụ trợ: Fire, Plague</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
         </tbody>
@@ -432,7 +435,7 @@
     </div>
 
     <!-- ---------- 2.4 D3 ---------- -->
-    <h3 class="sub-title sub-block" id="s2-4"><span class="no">2.4</span>D3 Săn hero: bị biến thể kéo sập ô nuốt</h3>
+    <h3 class="sub-title sub-block" id="s2-4"><span class="no">2.4</span>D3 Săn hero: bị biến thể kéo sập ô áp đảo</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
@@ -450,15 +453,15 @@
         <tbody>
           <tr><td>Trúng thẳng hero đứng lộ</td><td>Hero ở tầng cao, không có gì che</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Hạ hero yếu máu trước</td><td>Hero còn ít HP, đứng lộ</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
-          <tr><td>Nổ sát hero</td><td>Hero lộ một phần</td><td>Core</td><td class="lean even">Bị nuốt</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Nổ sát hero</td><td>Hero lộ một phần</td><td>Core</td><td class="lean even">Gần bị áp đảo</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Kéo sập ô dưới hero</td><td>Gần như luôn</td><td>Core</td><td class="lean"><span class="key">Áp đảo</span></td><td><span class="fi f">F luật</span></td></tr>
         </tbody>
       </table>
-      <p class="table-note">Trúng thẳng chỉ đáng bắn khi ô dưới hero khó sập. Với luật hiện tại, ô nào có hero cũng kéo sập được, nên đánh thẳng vào hero hiếm khi là lựa chọn tốt nhất.</p>
+      <p class="table-note">Trúng thẳng chỉ đáng bắn khi ô dưới hero khó sập. Với luật hiện tại, ô nào có hero cũng kéo sập được, nên đánh thẳng vào hero hiếm khi là lựa chọn tốt nhất <span class="fi i">I</span>.</p>
     </div>
 
     <!-- ---------- 2.5 D4 ---------- -->
-    <h3 class="sub-title sub-block" id="s2-5"><span class="no">2.5</span>D4 Phá thành: kéo sập luôn rẻ hơn bào HP</h3>
+    <h3 class="sub-title sub-block" id="s2-5"><span class="no">2.5</span>D4 Phá thành: kéo sập có thể rẻ hơn bào HP</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
@@ -474,15 +477,15 @@
         <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
           <tr><td>Bỏ hero, dồn hết vào thành</td><td>HP thành địch đã thấp, hero địch núp kỹ</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
-          <tr><td>Bào HP trực diện</td><td>Không có ô nào gần ngưỡng sập</td><td>Core</td><td class="lean even">Bị nuốt</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Bào HP trực diện</td><td>Không có ô nào gần ngưỡng sập</td><td>Core</td><td class="lean even">Gần bị áp đảo</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Kéo sập để ăn phần HP thưởng</td><td>Gần như luôn</td><td>Core</td><td class="lean"><span class="key">Áp đảo</span></td><td><span class="fi f">F luật</span></td></tr>
         </tbody>
       </table>
-      <p class="table-note">Vì sập cho thêm HP miễn phí, phát phá thành hiệu quả nhất luôn là phát đánh móng. D4 không có đường đi riêng tách khỏi D2.</p>
+      <p class="table-note">Vì sập cho thêm HP miễn phí, phát phá thành hiệu quả nhất nhiều khả năng là phát đánh móng, nên D4 khó có đường đi riêng tách khỏi D2. Cần số HP cell và damage để kiểm <span class="fi i">I</span>.</p>
     </div>
 
     <!-- ---------- 2.6 D5 ---------- -->
-    <h3 class="sub-title sub-block" id="s2-6"><span class="no">2.6</span>D5 Phá lớp che: chỉ đáng làm khi không kéo sập được ô dưới hero</h3>
+    <h3 class="sub-title sub-block" id="s2-6"><span class="no">2.6</span>D5 Phá lớp che: đáng làm khi không kéo sập được ô dưới hero</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
@@ -500,11 +503,11 @@
         <tbody>
           <tr><td>Bắn góc cao, rơi trúng thẳng</td><td>Hero ở tầng trên, phía trên không có gì che</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Dùng đạn xuyên</td><td>Hero sau nhiều lớp tường</td><td>Phụ trợ: Boomerang, Phantom, Beam</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
-          <tr><td>Phá block chắn rồi mới nổ</td><td>Hero sau 1 lớp tường</td><td>Core</td><td class="lean even">Bị nuốt</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Phá block chắn rồi mới nổ</td><td>Hero sau 1 lớp tường</td><td>Core</td><td class="lean even">Gần bị áp đảo</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Bỏ qua lớp che, kéo sập ô dưới hero</td><td>Gần như luôn</td><td>Core</td><td class="lean"><span class="key">Áp đảo</span></td><td><span class="fi i">I</span></td></tr>
         </tbody>
       </table>
-      <p class="table-note">Lớp che chỉ chặn vụ nổ, không chặn luật sập. Phá lớp che rồi mới nổ tốn thêm phát bắn. Kéo sập ô dưới hero thì hạ hero và trừ HP thành ngay trong cùng phát.</p>
+      <p class="table-note">Lớp che chỉ chặn vụ nổ, không chặn luật sập. Phá lớp che rồi mới nổ tốn thêm phát bắn. Kéo sập ô dưới hero thì hạ hero và trừ HP thành ngay trong cùng phát <span class="fi i">I</span>.</p>
     </div>
 
     <!-- ---------- 2.7 D6 ---------- -->
@@ -524,29 +527,30 @@
       <table>
         <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
-          <tr><td>Đang dẫn % HP: bắn chắc</td><td>Gần hết lượt, dẫn ít</td><td>Core</td><td class="lean">Thú vị, nếu thấy rõ thế trận</td><td><span class="fi i">I</span></td></tr>
-          <tr><td>Đang thua: bắn rủi ro</td><td>Gần hết lượt, đang thua</td><td>Core</td><td class="lean">Thú vị, nếu thấy rõ thế trận</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Đang dẫn % HP: bắn chắc</td><td>Gần hết lượt, dẫn ít</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Đang thua: bắn rủi ro</td><td>Gần hết lượt, đang thua</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Tung Shield hoặc Smoke</td><td>Gần hết lượt, đang dẫn</td><td>Phụ trợ: spell</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Xếp thành phòng thủ trước trận</td><td>Ngoài trận</td><td>Phụ trợ: xây thành</td><td class="lean even">Chưa rõ</td><td><span class="fi i">I</span></td></tr>
         </tbody>
       </table>
-      <p class="table-note">Trong core, "giữ thành" thực chất là <b>đua % HP</b>, vì không có hành động phòng thủ nào. Lựa chọn chỉ xuất hiện khi người chơi đọc được thế trận: % HP hai bên và số lượt còn lại.</p>
+      <p class="table-note">Trong core, "giữ thành" thực chất là <b>đua % HP</b>, vì không có hành động phòng thủ nào (F). UI có hiện % HP thành và banner ở 3 lượt cuối (F). Người chơi có dựa vào đó để chọn bắn chắc hay bắn rủi ro không thì chưa rõ <span class="fi i">I</span>.</p>
     </div>
 
     <!-- ---------- 2.8 Tổng hợp ---------- -->
-    <h3 class="sub-title sub-block" id="s2-8"><span class="no">2.8</span>Tổng hợp: sửa một quan hệ ở D2 mở lại ba dynamic</h3>
+    <h3 class="sub-title sub-block" id="s2-8"><span class="no">2.8</span>Tổng hợp: sửa một quan hệ ở D2 có thể mở lại ba dynamic</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Dynamic</th><th>Không gian cảm nhận</th><th>Nguyên nhân</th><th>Mở bằng</th><th>Công cụ</th></tr></thead>
+        <thead><tr><th>Dynamic</th><th>Không gian cảm nhận (I)</th><th>Nguyên nhân</th><th>Mở bằng</th><th>Công cụ</th></tr></thead>
         <tbody>
-          <tr><td>D1 Đọc gió</td><td class="lean even">Vừa</td><td>Mất preview từ trận 3</td><td>Preview ngắn, không tính gió</td><td>Information</td></tr>
-          <tr><td>D2 Đánh móng</td><td class="lean">Hẹp</td><td>Kéo sập ô có hero áp đảo</td><td>Đổi quan hệ giữa hero và ô sập (bảng dưới)</td><td>Intransitivity</td></tr>
-          <tr><td>D3 Săn hero</td><td class="lean">Bị nuốt</td><td>Như D2</td><td>Theo D2</td><td>—</td></tr>
-          <tr><td>D4 Phá thành</td><td class="lean">Bị nuốt</td><td>Như D2, cộng HP thưởng khi sập</td><td>Theo D2, hoặc bỏ HP thưởng</td><td>—</td></tr>
-          <tr><td>D5 Phá lớp che</td><td class="lean">Bị nuốt</td><td>Lớp che không chặn luật sập</td><td>Theo D2</td><td>—</td></tr>
-          <tr><td>D6 Giữ thành</td><td class="lean">Hẹp</td><td>Không thấy rõ thế trận, không có hành động thủ</td><td>Hiện % HP hai bên và số lượt còn lại</td><td>Information</td></tr>
+          <tr><td>D1 Đọc gió</td><td class="lean even">Vừa</td><td>Mất preview từ trận 3</td><td>Preview ngắn, không tính gió</td><td>Information (thông tin)</td></tr>
+          <tr><td>D2 Đánh móng</td><td class="lean">Hẹp</td><td>Kéo sập ô có hero áp đảo</td><td>Đổi quan hệ giữa hero và ô sập (bảng dưới)</td><td>Intransitivity (khắc chế)</td></tr>
+          <tr><td>D3 Săn hero</td><td class="lean">Bị áp đảo</td><td>Như D2</td><td>Theo D2</td><td>—</td></tr>
+          <tr><td>D4 Phá thành</td><td class="lean">Bị áp đảo</td><td>Như D2, cộng HP thưởng khi sập</td><td>Theo D2, hoặc bỏ HP thưởng</td><td>—</td></tr>
+          <tr><td>D5 Phá lớp che</td><td class="lean">Bị áp đảo</td><td>Lớp che không chặn luật sập</td><td>Theo D2</td><td>—</td></tr>
+          <tr><td>D6 Giữ thành</td><td class="lean">Hẹp</td><td>Không có hành động thủ trong core (F). Chưa rõ người chơi có dùng % HP và số lượt còn lại để chọn cách bắn (I)</td><td>Kiểm HUD hiện tại. Nếu chưa so được % HP hai bên thì hiện cạnh nhau</td><td>Information (thông tin)</td></tr>
         </tbody>
       </table>
+      <p class="table-note">Mức Vừa / Hẹp / Bị áp đảo là đánh giá của doc, chưa có dữ liệu người chơi.</p>
     </div>
 
     <div class="table-wrap" style="margin-top:14px">
@@ -562,6 +566,248 @@
     </div>
   </section>
 
+
+</main>
+</div>
+
+<div class="page" id="page-units" hidden>
+
+<nav class="toc" aria-label="Mục lục nhân vật và spell">
+  <span class="mono">Mục lục</span>
+  <ol>
+    <li><a href="#page-units">Tổng quan</a></li>
+    <li><a href="#s3"><span class="n">3.</span>Nhân vật và spell</a>
+      <ol>
+        <li><a href="#s3-1"><span class="n">3.1</span>Luật chung hero</a></li>
+        <li><a href="#s3-2"><span class="n">3.2</span>Hero một viên</a></li>
+        <li><a href="#s3-3"><span class="n">3.3</span>Hero nhiều viên</a></li>
+        <li><a href="#s3-4"><span class="n">3.4</span>Mở khóa</a></li>
+        <li><a href="#s3-5"><span class="n">3.5</span>Spell</a></li>
+        <li><a href="#s3-6"><span class="n">3.6</span>Luật spell</a></li>
+        <li><a href="#s3-7"><span class="n">3.7</span>Nối vào dynamic</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+  <header>
+    <div class="mono">Doc nội bộ &nbsp;|&nbsp; Quan sát</div>
+    <h1>Nhân vật và spell</h1>
+    <p class="lead">Castle Rivals có <b>27 hero và 12 spell</b>, bản đang chạy dùng được 24 hero và 9 spell. Hero khác nhau ở kiểu đạn, không có skill riêng. Spell thì mỗi trận mang 1, dùng 1 lần.</p>
+  </header>
+
+  <section id="s3">
+    <div class="sec-head">
+      <h2><span class="no">3.</span>Nhân vật và spell</h2>
+      <p class="sub">Mục 3.1–3.6 là dữ liệu <span class="fi f">F</span>. Mục 3.7 là suy luận <span class="fi i">I</span>.</p>
+    </div>
+
+    <!-- ---------- 3.1 ---------- -->
+    <h3 class="sub-title sub-block" id="s3-1"><span class="no">3.1</span>Luật chung: mỗi hero là một kiểu đạn</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Luật</th><th>Giá trị</th></tr></thead>
+        <tbody>
+          <tr><td>Đội hình</td><td>Tối đa 4 hero. Đổi hero miễn phí trong pha ngắm, không reset thời gian lượt</td></tr>
+          <tr><td>Skill riêng</td><td>Không có. Ultimate có trong code nhưng đang tắt</td></tr>
+          <tr><td>Bay</td><td>Lực cố định theo loại đạn. Mỗi loại đạn có hệ số gió và trọng lực riêng, nên cùng một góc ngắm mỗi hero rơi một chỗ</td></tr>
+          <tr><td>Chạm</td><td>Trúng thẳng không bị chắn, không giảm theo khoảng cách. Vùng nổ giảm dần ra mép. Block còn nguyên chắn giữa thì damage phía sau còn 20%</td></tr>
+          <tr><td>Phe mình</td><td>Đạn mình xuyên lâu đài mình. Không có friendly fire, không có crit</td></tr>
+          <tr><td>Nâng cấp</td><td>Trần cấp 50, chung cho mọi hero. Tăng máu, damage, độ chính xác, bán kính nổ, số viên. Tỉ lệ chia damage (lên block, lên hero, trúng thẳng, mép vùng nổ) không tăng theo cấp</td></tr>
+          <tr><td>Giá nâng cấp</td><td>Vàng và thẻ của hero đó, một thang chung cho 27 hero. Thiếu thẻ thì thẻ wild bù 1 đổi 1. Cấp 1 → 2: 8 vàng + 4 thẻ. Cấp 49 → 50: 3.791 vàng + 181 thẻ</td></tr>
+          <tr><td>Rarity</td><td>Common 5 · Uncommon 6 · Rare 7 · Epic 5 · Legendary 4</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note"><b>Cột Gió ở 3.2 và 3.3</b> là hệ số gió của đạn. 0 là gió không đẩy. Cannoneer 0.5 là mốc để so.</p>
+    </div>
+
+    <!-- ---------- 3.2 ---------- -->
+    <h3 class="sub-title sub-block" id="s3-2"><span class="no">3.2</span>Hero một viên: 15 hero, khác nhau ở việc viên đạn làm khi chạm</h3>
+    <div class="table-wrap vt">
+      <table>
+        <thead><tr><th>Hero</th><th>Rarity</th><th>Gió</th><th>Hành vi</th><th>Đặc biệt</th></tr></thead>
+        <tbody>
+          <tr><td>Cannoneer</td><td>Common</td><td>0.5</td><td>Nổ khi chạm. Cung đạn đạo thường, dùng làm mốc so các hero khác</td><td>—</td></tr>
+          <tr><td>Astromancer</td><td>Uncommon</td><td>0.25</td><td>Viên đầu không nổ, mở portal trên cao. Portal mưa thiên thạch rơi gần như thẳng xuống, thiên thạch không chịu gió</td><td>Đánh từ trên xuống</td></tr>
+          <tr><td>GoblinEngineer</td><td>Uncommon</td><td>0</td><td>Không có viên bay. Nạp 0.3 giây rồi bắn tia thẳng theo hướng ngắm. Collider đầu tiên ăn damage trúng thẳng, collider sau ăn damage hero thường</td><td>Xuyên che</td></tr>
+          <tr><td>PlagueDoctor</td><td>Rare</td><td>0.9</td><td>Chạm chỉ phá block, không gây damage lên hero. Sau đó thả mây độc sống 3 lượt</td><td>Qua lượt</td></tr>
+          <tr><td>Thor</td><td>Rare</td><td>0.5</td><td>Búa nổ khi chạm, rồi một tia sét rơi thẳng xuống điểm chạm</td><td>Đánh 2 lần</td></tr>
+          <tr><td>Skull</td><td>Common</td><td>0.5</td><td>Nổ khi chạm, rồi đốt mọi ô trong vùng nổ. Lửa phá cấu trúc cuối mỗi lượt, không gây damage lên hero</td><td>Qua lượt</td></tr>
+          <tr><td>MoleDrill</td><td>Rare</td><td>0.3</td><td>Chạm rồi khoan ngang xuyên thành 15m, tắt trọng lực. Hết quãng thì nổ</td><td>Khoan xuyên thành</td></tr>
+          <tr><td>BladeThrower</td><td>Common</td><td>0</td><td>Bay thẳng, không rơi. Chạm thì không nổ mà cắt tiếp 15m theo hướng bay. Mỗi block chắn rút ngắn quãng cắt</td><td>Cắt ngang</td></tr>
+          <tr><td>Athena</td><td>Rare</td><td>0.4</td><td>Nổ khi chạm, rồi đặt một quả cầu sét sống 2 lượt. Cuối lượt, các quả cùng phe nối tia với nhau. Một quả đứng một mình không gây damage</td><td>Qua lượt</td></tr>
+          <tr><td>Grenadier</td><td>Uncommon</td><td>0.25</td><td>Nổ khi chạm, rồi văng 5 mảnh lên trên. Mảnh không chịu gió</td><td>Mảnh văng</td></tr>
+          <tr><td>FireMage</td><td>Legendary</td><td>0.35</td><td>Chạm thì một sóng nổ nở dần trong 0.5 giây. Chỉ đụng các collider nằm trong lát ngang quanh tâm</td><td>—</td></tr>
+          <tr><td>VampireHunter</td><td>Legendary</td><td>0.5</td><td>Bay gần như thẳng. Mỗi lần nổ, trúng hay trượt, hồi máu cho mọi hero phe mình</td><td>Hồi máu</td></tr>
+          <tr><td>Tsuki</td><td>Legendary</td><td>0.3</td><td>Không có trọng lực. Bay qua thành địch thêm 7.5m rồi quay về, xuyên mọi thứ trên đường. Gió chỉ bẻ độ rộng cung</td><td>Xuyên che</td></tr>
+          <tr><td>Shroom <small>Khóa</small></td><td>Rare</td><td>0</td><td>Nổ khi chạm. Cung ngắn và chậm hơn Cannoneer</td><td>—</td></tr>
+          <tr><td>IronGuy <small>Khóa</small></td><td>Uncommon</td><td>0</td><td>Tia thẳng như GoblinEngineer, thêm một vụ nổ ở điểm chạm đầu tiên</td><td>Xuyên che</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ---------- 3.3 ---------- -->
+    <h3 class="sub-title sub-block" id="s3-3"><span class="no">3.3</span>Hero nhiều viên: 12 hero, khác nhau ở cách chùm đạn tỏa</h3>
+    <div class="table-wrap vt">
+      <table>
+        <thead><tr><th>Hero</th><th>Rarity</th><th>Gió</th><th>Số viên</th><th>Hành vi</th><th>Đặc biệt</th></tr></thead>
+        <tbody>
+          <tr><td>Archer</td><td>Common</td><td>1.5</td><td>9 → 12</td><td>Chùm xòe 6°, từng viên nổ khi chạm. Chịu gió mạnh nhất trong 27 hero</td><td>—</td></tr>
+          <tr><td>BirdBomber</td><td>Rare</td><td>0</td><td>5</td><td>Chim bay thẳng, chậm. Chạm không gây damage, cắm một quả bom nổ sau 3 lượt. Bom bị damage bất kỳ thì nổ ngay</td><td>Qua lượt</td></tr>
+          <tr><td>Cowboy</td><td>Epic</td><td>0.4</td><td>4</td><td>Các viên tách thành vòng quanh hướng bắn (2°), từng viên nổ khi chạm</td><td>—</td></tr>
+          <tr><td>Orc</td><td>Uncommon</td><td>0.5</td><td>2</td><td>Vòng rộng hơn Cowboy (4°), chùm cụp sớm hơn</td><td>—</td></tr>
+          <tr><td>Goku</td><td>Epic</td><td>0.3</td><td>5</td><td>Chùm 5°. Trên đường bay, viên bị kéo lệch sang ngang rồi kéo về hướng ngắm</td><td>Đường cong</td></tr>
+          <tr><td>StarPrincess</td><td>Epic</td><td>0</td><td>8</td><td>Một viên bay 0.5 giây rồi tách thành vòng, viên gốc biến mất</td><td>—</td></tr>
+          <tr><td>CopyCat</td><td>Uncommon</td><td>0</td><td>3</td><td>Chùm khít (2°), từng viên nổ khi chạm</td><td>—</td></tr>
+          <tr><td>Pirate</td><td>Common</td><td>0.35</td><td>12</td><td>Cả chùm đi cùng một đường. Phát rời nòng nhanh nhất</td><td>—</td></tr>
+          <tr><td>Zahra</td><td>Epic</td><td>0.1</td><td>6 → 9</td><td>Chùm 6°, chạm rồi khoan ngang xuyên thành 7m. Hết quãng thì nổ</td><td>Khoan xuyên thành</td></tr>
+          <tr><td>IceMan</td><td>Rare</td><td>1</td><td>3</td><td>Mỗi viên cắm một mảnh băng vào ô. Đủ 3 mảnh trong cùng một ô thì ô bị đóng băng 2 lượt, hero trong ô không hành động được</td><td>Khóa hero</td></tr>
+          <tr><td>Tesla</td><td>Epic</td><td>0.5</td><td>3</td><td>Mỗi viên đặt một quả cầu sét sống 2 lượt, cùng luật với Athena. Nổ lúc chạm gần như không có damage</td><td>Qua lượt</td></tr>
+          <tr><td>Revenant <small>Khóa</small></td><td>Legendary</td><td>0.1</td><td>5 → 9</td><td>Chùm rộng 10°, đường cong như Goku. Xuyên block, chỉ nổ khi chạm hero hoặc bom chim</td><td>Xuyên che</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details class="aux">
+      <summary><b>Chỉ số · 27 hero</b><span>Máu, damage, tỉ lệ chia damage, số viên, bán kính nổ, từ cấp 1 đến cấp 50.</span><span class="chev"><span class="o">Xem</span><span class="c">Thu lại</span></span></summary>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Hero</th><th>Máu</th><th>Damage gốc</th><th>% gạch</th><th>% hero</th><th>% thẳng</th><th>% mép</th><th>Số viên</th><th>Bán kính</th></tr></thead>
+        <tbody>
+          <tr><td>Cannoneer</td><td>200 → 1125</td><td>150 → 890</td><td>60</td><td>40</td><td>100</td><td>50</td><td>1</td><td>3.15 → 3.89</td></tr>
+          <tr><td>Archer</td><td>150 → 705</td><td>72 → 331</td><td>75</td><td>25</td><td>35</td><td>50</td><td>9 → 12</td><td>1.67 → 1.92</td></tr>
+          <tr><td>GoblinEngineer</td><td>120 → 527</td><td>165 → 831</td><td>60</td><td>40</td><td>90</td><td>100</td><td>1</td><td>0.8 → 1.17</td></tr>
+          <tr><td>FireMage</td><td>220 → 960</td><td>150 → 853</td><td>70</td><td>30</td><td>50</td><td>50</td><td>1</td><td>5.5 → 6.61</td></tr>
+          <tr><td>PlagueDoctor</td><td>160 → 715</td><td>27 → 482</td><td>40</td><td>60</td><td>60</td><td>50</td><td>2 → 4</td><td>2.6 → 3.1</td></tr>
+          <tr><td>BladeThrower</td><td>180 → 1031</td><td>160 → 789</td><td>60</td><td>30</td><td>100</td><td>80</td><td>2 → 4</td><td>1.8 → 2.54</td></tr>
+          <tr><td>BirdBomber</td><td>175 → 804</td><td>90 → 534</td><td>60</td><td>40</td><td>0</td><td>50</td><td>5</td><td>3 → 3.74</td></tr>
+          <tr><td>MoleDrill</td><td>300 → 1262</td><td>18 → 203</td><td>70</td><td>30</td><td>50</td><td>20</td><td>1</td><td>3.8 → 4.91</td></tr>
+          <tr><td>Astromancer</td><td>115 → 559</td><td>100 → 300</td><td>60</td><td>40</td><td>40</td><td>35</td><td>6 → 18</td><td>2.85 → 3.22</td></tr>
+          <tr><td>IceMan</td><td>170 → 614</td><td>45 → 600</td><td>50</td><td>50</td><td>100</td><td>100</td><td>3</td><td>2.5 → 3.24</td></tr>
+          <tr><td>Skull</td><td>120 → 971</td><td>30 → 219</td><td>100</td><td>0</td><td>25</td><td>50</td><td>1</td><td>1.6 → 1.97</td></tr>
+          <tr><td>Pirate</td><td>200 → 829</td><td>96 → 429</td><td>75</td><td>25</td><td>35</td><td>80</td><td>12</td><td>1.35 → 1.72</td></tr>
+          <tr><td>Thor</td><td>210 → 950</td><td>120 → 786</td><td>60</td><td>40</td><td>100</td><td>60</td><td>1</td><td>2.9 → 3.64</td></tr>
+          <tr><td>Grenadier</td><td>190 → 856</td><td>40 → 595</td><td>50</td><td>50</td><td>80</td><td>60</td><td>1</td><td>1.55 → 2.29</td></tr>
+          <tr><td>Goku</td><td>175 → 841</td><td>105 → 549</td><td>30</td><td>70</td><td>80</td><td>50</td><td>5</td><td>2.45 → 3.19</td></tr>
+          <tr><td>Athena</td><td>135 → 912</td><td>60 → 504</td><td>50</td><td>50</td><td>70</td><td>90</td><td>1</td><td>3 → 3.74</td></tr>
+          <tr><td>Cowboy</td><td>155 → 784</td><td>145 → 515</td><td>45</td><td>55</td><td>75</td><td>60</td><td>4</td><td>2.6 → 2.97</td></tr>
+          <tr><td>CopyCat</td><td>90 → 608</td><td>160 → 752</td><td>30</td><td>70</td><td>100</td><td>50</td><td>3</td><td>2.35 → 3.09</td></tr>
+          <tr><td>Orc</td><td>200 → 940</td><td>145 → 700</td><td>55</td><td>45</td><td>60</td><td>40</td><td>2</td><td>3.4 → 4.14</td></tr>
+          <tr><td>StarPrincess</td><td>160 → 752</td><td>85 → 455</td><td>70</td><td>30</td><td>50</td><td>10</td><td>8</td><td>2.15 → 2.89</td></tr>
+          <tr><td>VampireHunter</td><td>190 → 708</td><td>225 → 965</td><td>35</td><td>65</td><td>150</td><td>40</td><td>1</td><td>2.55 → 2.69</td></tr>
+          <tr><td>Tsuki</td><td>155 → 747</td><td>95 → 613</td><td>60</td><td>40</td><td>70</td><td>70</td><td>1</td><td>1.05 → 1.42</td></tr>
+          <tr><td>Zahra</td><td>135 → 690</td><td>110 → 554</td><td>50</td><td>50</td><td>50</td><td>60</td><td>6 → 9</td><td>2.3 → 2.55</td></tr>
+          <tr><td>Revenant</td><td>118 → 821</td><td>120 → 490</td><td>30</td><td>70</td><td>100</td><td>75</td><td>5 → 9</td><td>2.65 → 3.15</td></tr>
+          <tr><td>Tesla</td><td>175 → 693</td><td>1</td><td>70</td><td>30</td><td>30</td><td>50</td><td>3</td><td>2</td></tr>
+          <tr><td>Shroom</td><td>138 → 656</td><td>16 → 312</td><td>30</td><td>70</td><td>70</td><td>50</td><td>1</td><td>4.2 → 4.57</td></tr>
+          <tr><td>IronGuy</td><td>210 → 654</td><td>130 → 537</td><td>70</td><td>30</td><td>30</td><td>70</td><td>1</td><td>1.8 → 2.91</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Damage gốc là của một viên; chùm nhiều viên thì mỗi viên tính riêng. BirdBomber có % thẳng bằng 0: chạm hero không gây damage trực tiếp. Tesla giữ damage gốc bằng 1 ở mọi cấp, damage nằm ở quả cầu sét.</p>
+      </div>
+    </details>
+
+    <!-- ---------- 3.4 ---------- -->
+    <h3 class="sub-title sub-block" id="s3-4"><span class="no">3.4</span>Mở khóa: hero rải đều 14 arena, spell mở từ arena 5</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Mốc</th><th>Hero mở</th><th>Spell mở</th></tr></thead>
+        <tbody>
+          <tr><td>Bắt đầu</td><td>Cannoneer</td><td>—</td></tr>
+          <tr><td>Sau 2 trận</td><td>Archer</td><td>—</td></tr>
+          <tr><td>Arena 1</td><td>Astromancer (cuối arena)</td><td>—</td></tr>
+          <tr><td>Arena 2</td><td>BirdBomber (cuối)</td><td>—</td></tr>
+          <tr><td>Arena 3</td><td>GoblinEngineer (cuối)</td><td>—</td></tr>
+          <tr><td>Arena 4</td><td>PlagueDoctor (cuối)</td><td>—</td></tr>
+          <tr><td>Arena 5</td><td>Thor (50%), Cowboy (cuối)</td><td>Mở tính năng spell + Arrow Rain</td></tr>
+          <tr><td>Arena 6</td><td>Orc (50%), Goku (cuối)</td><td>Power Shot</td></tr>
+          <tr><td>Arena 7</td><td>Skull (50%), StarPrincess (cuối)</td><td>Shield</td></tr>
+          <tr><td>Arena 8</td><td>CopyCat (50%), MoleDrill (cuối)</td><td>X-Ray</td></tr>
+          <tr><td>Arena 9</td><td>BladeThrower (50%), Athena (cuối)</td><td>Earthquake</td></tr>
+          <tr><td>Arena 10</td><td>Pirate (cuối)</td><td>Smoke Cloud</td></tr>
+          <tr><td>Arena 11</td><td>Grenadier (cuối)</td><td>Heal</td></tr>
+          <tr><td>Arena 12</td><td>Zahra (cuối)</td><td>Damage Boost</td></tr>
+          <tr><td>Arena 13</td><td>IceMan (cuối)</td><td>Pirate Ship</td></tr>
+          <tr><td>Arena 14</td><td>Tesla (cuối)</td><td>—</td></tr>
+          <tr><td>Ngoài arena</td><td>FireMage: đăng nhập ngày 7. VampireHunter, Tsuki: chỉ qua gói IAP</td><td>—</td></tr>
+          <tr><td>Khóa</td><td>Revenant, Shroom, IronGuy</td><td>Freeze, Lightning, Trajectory</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">"50%" là mốc giữa arena, "cuối" là mốc cuối arena. Spell mở ở mốc 5% của mỗi arena. Gói StarterPack mở sớm Cannoneer, Archer, Astromancer, BirdBomber; gói ElitePack mở Zahra. Muốn dùng spell trong trận phải qua bước tutorial giới thiệu spell.</p>
+    </div>
+
+    <!-- ---------- 3.5 ---------- -->
+    <h3 class="sub-title sub-block" id="s3-5"><span class="no">3.5</span>Spell: 9 dùng được, 3 bị khóa</h3>
+    <p class="tbl-label"><b>Dùng được · 9</b><span>Xếp theo arena mở. Mọi spell đều rarity Epic, cấp 1 → 50.</span></p>
+    <div class="table-wrap vt">
+      <table>
+        <thead><tr><th>Spell</th><th>Mở</th><th>Hiệu ứng</th><th>Thời gian</th><th>Chỉ số cấp 1 → 50</th><th>Ghi chú</th></tr></thead>
+        <tbody>
+          <tr><td>Arrow Rain</td><td>Arena 5</td><td>25 mũi tên rải xuống thành địch, mỗi mũi một vụ nổ nhỏ. Trúng thẳng hero ×1.5</td><td>Tức thì</td><td>Damage 60 → 285 mỗi mũi</td><td>Không nhận buff, không kích hoạt Center Perk</td></tr>
+          <tr><td>Power Shot</td><td>Arena 6</td><td>Tăng damage phe mình</td><td>1 lượt: chỉ lượt cast</td><td>+50% → +100%</td><td>—</td></tr>
+          <tr><td>Shield</td><td>Arena 7</td><td>Thêm khiên cho thành mình. Khiên tối đa 100</td><td>Tức thì</td><td>25 → 50</td><td>Nguồn khiên duy nhất</td></tr>
+          <tr><td>X-Ray</td><td>Arena 8</td><td>Thấy hero sau tường, tăng damage trúng thẳng hero</td><td>5 lượt</td><td>+10% → +35%</td><td>—</td></tr>
+          <tr><td>Earthquake</td><td>Arena 9</td><td>4 nhịp, mỗi nhịp gây damage hero địch ở tầng dưới cùng và phá gạch hàng đáy</td><td>Khoảng 1.5 giây</td><td>Damage 50 → 589</td><td>Không dùng đạn. Gạch bị phá biến mất sau 1 lượt</td></tr>
+          <tr><td>Smoke Cloud</td><td>Arena 10</td><td>Khói trên thành mình, giảm damage của địch</td><td>3 lượt, tác dụng thực tế 2 lượt của địch</td><td>−25% → −50%</td><td>Khói chỉ hiện trong lượt địch</td></tr>
+          <tr><td>Heal</td><td>Arena 11</td><td>Hồi máu mọi hero còn sống phe mình, không vượt máu tối đa</td><td>Tức thì</td><td>100 → 835</td><td>Bot chỉ dùng khi có hero mất máu</td></tr>
+          <tr><td>Damage Boost</td><td>Arena 12</td><td>Tăng damage phe mình</td><td>3 lượt</td><td>+20% → +45%</td><td>—</td></tr>
+          <tr><td>Pirate Ship</td><td>Arena 13</td><td>Tàu bắn một loạt pháo vào thành địch cuối mỗi lượt của người dùng</td><td>3 lượt của người dùng</td><td>Damage 65 → 653 mỗi viên</td><td>Không nhận buff, có kích hoạt Center Perk</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details class="aux">
+      <summary><b>Bị khóa · 3</b><span>Có trong code, không mở được trong bản đang chạy.</span><span class="chev"><span class="o">Xem</span><span class="c">Thu lại</span></span></summary>
+      <div class="table-wrap vt">
+      <table>
+        <thead><tr><th>Spell</th><th>Hiệu ứng</th><th>Thời gian</th><th>Chỉ số cấp 1 → 50</th></tr></thead>
+        <tbody>
+          <tr><td>Freeze</td><td>Lốc xoáy trên thành địch, đóng băng mọi ô của thành địch và gây damage lên mọi hero địch</td><td>Không thấy</td><td>Damage 10 → 108</td></tr>
+          <tr><td>Lightning</td><td>Một tia sét lên mỗi hero địch còn sống</td><td>Tức thì</td><td>Damage 65 → 506 mỗi tia</td></tr>
+          <tr><td>Trajectory</td><td>Hiện đường đạn và tăng bán kính nổ</td><td>3 lượt</td><td>+5% → +15% bán kính</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+
+    <!-- ---------- 3.6 ---------- -->
+    <h3 class="sub-title sub-block" id="s3-6"><span class="no">3.6</span>Luật spell: 1 slot, 1 lần mỗi trận</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Luật</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Slot</td><td>1 spell mỗi trận, cả player lẫn bot</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Số lần dùng</td><td>1 lần mỗi trận</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Khi nào dùng</td><td>Chỉ trong pha ngắm, khi lượt không bị tạm dừng. Sau khi cast, input bị khóa 1.8–3.5 giây</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Phát bắn</td><td>Cast xong vẫn bắn bình thường, không mất lượt</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Đếm lượt của buff</td><td>Trừ 1 vào đầu lượt của phe sở hữu buff. Buff 3 lượt là lượt cast cộng 2 lượt sau của mình</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Cộng dồn</td><td>Cast lại cùng spell chỉ làm mới thời gian, không cộng chỉ số. Buff từ nguồn khác nhau thì cộng lại</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Nhận thẻ</td><td>Rương: thẻ spell chia cho một spell ngẫu nhiên đã mở. IAP: gói Vip2 có 100 thẻ Earthquake. Shop thường không bán spell</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Nâng cấp</td><td>Vàng và thẻ, cùng thang giá với hero, trần cấp 50</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Bot</td><td>Mang 1 spell ngẫu nhiên trong các spell player đã mở. 20% số lượt có cast, trước khi ngắm. Lượt "bắn hỏng" không cast. Cấp spell của bot là 1, từ 1.250 trophy là 5, tối đa 25</td><td><span class="fi f">F</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ---------- 3.7 ---------- -->
+    <h3 class="sub-title sub-block" id="s3-7"><span class="no">3.7</span>Nối vào dynamic: chỉ 1 hero miễn phí xuyên được lớp che</h3>
+    <div class="table-wrap vt">
+      <table>
+        <thead><tr><th>Dynamic</th><th>Hero liên quan (dùng được)</th><th>Spell liên quan</th><th>Nhận xét</th></tr></thead>
+        <tbody>
+          <tr><td>D1 Đọc gió</td><td>Gió 0: GoblinEngineer, BladeThrower, BirdBomber, CopyCat, StarPrincess. Gió mạnh: Archer 1.5, IceMan 1, PlagueDoctor 0.9</td><td>—</td><td>5 hero cho phép né gió. Hero gió mạnh làm D1 khó hơn</td></tr>
+          <tr><td>D2 Đánh móng</td><td>MoleDrill, Zahra (khoan), BladeThrower (cắt ngang), PlagueDoctor (chỉ phá block), Skull (đốt ô)</td><td>Earthquake</td><td>Nhiều công cụ cho lối chơi vốn đã áp đảo</td></tr>
+          <tr><td>D3 Săn hero</td><td>Hero có % thẳng cao: VampireHunter 150, Cannoneer, BladeThrower, IceMan, Thor, CopyCat 100</td><td>X-Ray, Arrow Rain (×1.5 trúng thẳng)</td><td>Lightning, spell săn hero rõ nhất, đang bị khóa</td></tr>
+          <tr><td>D5 Phá lớp che</td><td>Xuyên che: GoblinEngineer (cuối arena 3), Tsuki (chỉ IAP)</td><td>X-Ray (chỉ nhìn, không xuyên)</td><td>Revenant, IronGuy cũng xuyên che nhưng đang khóa. Người chơi không trả tiền chỉ có 1 hero xuyên che</td></tr>
+          <tr><td>D6 Giữ thành</td><td>VampireHunter (hồi máu hero)</td><td>Shield, Smoke Cloud, Heal</td><td>Hành động thủ chỉ đến từ spell, và chỉ mở từ arena 7</td></tr>
+          <tr><td>Đặt trước, ăn sau</td><td>Athena, Tesla (quả cầu 2 lượt), BirdBomber (bom 3 lượt), PlagueDoctor (mây 3 lượt), Skull (lửa), IceMan (đóng băng 2 lượt)</td><td>Pirate Ship, Damage Boost, Smoke Cloud, X-Ray</td><td>Đây là nguồn chính cho lối chơi qua nhiều lượt, không có trong core</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Bảng này là suy luận <span class="fi i">I</span>: ghép dữ liệu ở 3.2–3.5 vào các dynamic của tab MDA. "Đặt trước, ăn sau" chưa có mã D trong tab MDA.</p>
+    </div>
+  </section>
 
 </main>
 </div>
