@@ -58,7 +58,6 @@
   section { margin-top: 72px; }
   .sec-head { margin-bottom: 26px; }
   .sec-head .sub { font-size: 17px; color: var(--slate); }
-  .rule { height: 2px; background: var(--accent); opacity: .75; margin-top: 64px; border: 0; }
 
   /* ---------- Tables ---------- */
   .table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
@@ -118,9 +117,6 @@
   details.aux[open] > summary .chev .o { display: none; }
   details.aux[open] > summary .chev .c { display: inline; }
 
-  footer { margin-top: 64px; font-size: 13px; color: var(--body); }
-  footer p + p { margin-top: 6px; }
-  footer a { color: var(--slate); }
 
   @media (max-width: 1024px) {
     .page { grid-template-columns: 1fr; gap: 0; }
@@ -211,7 +207,7 @@
       </div>
     </details>
 
-    <p class="meta">Cả 12 dòng đều là <span class="fi f">F</span>, đã đối chiếu với project Unity Castle Rivals ngày 26/10/2026. Số trận đếm cả trận tutorial: trận 1 là tutorial (bắn thành bia, AI không có lượt, không giới hạn lượt), trận đấu bot đầu tiên là trận 2. <b style="color:var(--navy)">So với outline ban đầu</b> (Drag, Turn base, Chỉnh hướng): "Chỉnh hướng" nằm trong Drag, và còn thiếu 4 core là gió, damage, luật sập, điều kiện thắng.</p>
+    <p class="meta">Cả 12 dòng đều là <span class="fi f">F</span>. Số trận đếm cả trận tutorial: trận 1 là tutorial (bắn thành bia, AI không có lượt, không giới hạn lượt), trận đấu bot đầu tiên là trận 2. <b style="color:var(--navy)">So với outline ban đầu</b> (Drag, Turn base, Chỉnh hướng): "Chỉnh hướng" nằm trong Drag, và còn thiếu 4 core là gió, damage, luật sập, điều kiện thắng.</p>
 
     <!-- ---------- 1.2 Dynamic ---------- -->
     <h3 class="sub-title sub-block" id="s1-2"><span class="no">1.2</span>Dynamic: 11 lối chơi, 3 lối gộp làm một</h3>
@@ -300,10 +296,6 @@
     </div>
   </section>
 
-  <hr class="rule">
-  <footer>
-    <p>Số liệu đối chiếu với code Castle Rivals build 1.0.14 ngày 26/10/2026.</p>
-  </footer>
 
 </main>
 </div>
@@ -347,12 +339,12 @@
     <h3 class="sub-title sub-block" id="s2-1"><span class="no">2.1</span>Cách đọc: biến → biến thể → đánh giá → mở rộng</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Bước</th><th>Làm gì</th><th>Nguồn</th></tr></thead>
+        <thead><tr><th>Bước</th><th>Làm gì</th></tr></thead>
         <tbody>
-          <tr><td>1. Biến</td><td>Liệt kê mechanic làm đổi cách chơi lối này</td><td>Fullerton 05</td></tr>
-          <tr><td>2. Biến thể</td><td>Ghi các cách chơi cụ thể người chơi chọn được, sinh ra từ tổ hợp giá trị của biến</td><td>—</td></tr>
-          <tr><td>3. Đánh giá</td><td>Hỏi từng biến thể: <i>"Khi nào đây là cách tốt nhất?"</i></td><td>Rollings &amp; Morris 03</td></tr>
-          <tr><td>4. Mở rộng</td><td>Đề xuất cách mở không gian cảm nhận bằng 4 công cụ: determinism, transitivity, information, symmetry</td><td>Game Balance 02</td></tr>
+          <tr><td>1. Biến</td><td>Liệt kê mechanic làm đổi cách chơi lối này</td></tr>
+          <tr><td>2. Biến thể</td><td>Ghi các cách chơi cụ thể người chơi chọn được, sinh ra từ tổ hợp giá trị của biến</td></tr>
+          <tr><td>3. Đánh giá</td><td>Hỏi từng biến thể: <i>"Khi nào đây là cách tốt nhất?"</i></td></tr>
+          <tr><td>4. Mở rộng</td><td>Đề xuất cách mở không gian cảm nhận bằng 4 công cụ: determinism, transitivity, information, symmetry</td></tr>
         </tbody>
       </table>
       <p class="table-note"><b>Đánh giá:</b> <b>Thú vị</b> là tốt nhất ở một số tình huống. <span class="key">Áp đảo</span> là gần như luôn tốt nhất. <b>Bị nuốt</b> là có biến thể khác làm cùng việc tốt hơn. <b>Cột "Cần":</b> Core là chơi được chỉ với mechanic core; Phụ trợ là cần thêm hero hoặc spell.</p>
@@ -406,7 +398,7 @@
           <tr><td>Né gió bằng đạn không ăn gió</td><td>Gió rất mạnh</td><td>Phụ trợ: Beam, Time Bomb</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
         </tbody>
       </table>
-      <p class="table-note"><b>Mở rộng (đề xuất):</b> preview ngắn, không tính gió, như đã chọn trong P1 (Information). Không có preview, quyết định ngắm của người mới thành <i>impossible</i>: họ chọn bừa (Sylvester 05). Hai góc cùng chạm một điểm là suy từ lực cố định, cần kiểm trong build. Đánh đổi góc thấp / góc cao là chỗ D1 nối sang D5.</p>
+      <p class="table-note"><b>Mở rộng (đề xuất):</b> preview ngắn, không tính gió (Information). Không có preview, quyết định ngắm của người mới thành <i>impossible</i>: họ chọn bừa. Hai góc cùng chạm một điểm là suy từ lực cố định, cần kiểm trong build. Đánh đổi góc thấp / góc cao là chỗ D1 nối sang D5.</p>
     </div>
 
     <!-- ---------- 2.3 D2 ---------- -->
@@ -547,7 +539,7 @@
       <table>
         <thead><tr><th>Dynamic</th><th>Không gian cảm nhận</th><th>Nguyên nhân</th><th>Mở bằng</th><th>Công cụ</th></tr></thead>
         <tbody>
-          <tr><td>D1 Đọc gió</td><td class="lean even">Vừa</td><td>Mất preview từ trận 3</td><td>Preview ngắn, không tính gió (P1)</td><td>Information</td></tr>
+          <tr><td>D1 Đọc gió</td><td class="lean even">Vừa</td><td>Mất preview từ trận 3</td><td>Preview ngắn, không tính gió</td><td>Information</td></tr>
           <tr><td>D2 Đánh móng</td><td class="lean">Hẹp</td><td>Kéo sập ô có hero áp đảo</td><td>Đổi quan hệ giữa hero và ô sập (bảng dưới)</td><td>Intransitivity</td></tr>
           <tr><td>D3 Săn hero</td><td class="lean">Bị nuốt</td><td>Như D2</td><td>Theo D2</td><td>—</td></tr>
           <tr><td>D4 Phá thành</td><td class="lean">Bị nuốt</td><td>Như D2, cộng HP thưởng khi sập</td><td>Theo D2, hoặc bỏ HP thưởng</td><td>—</td></tr>
@@ -566,14 +558,10 @@
           <tr><td>C. Ô có hero đứng <br>khó sập hơn</td><td>Mở một phần</td><td>Giữ nguyên</td><td>Mở một phần</td><td>Người chơi khó đọc ô nào khó sập</td></tr>
         </tbody>
       </table>
-      <p class="table-note"><b>Đề xuất:</b> prototype phương án A trước, vì một luật mở được 2 dynamic là D3 và D5. Mỗi lần chỉ đổi một quan hệ rồi đo lại, vì buff một lựa chọn có thể làm lợi cho lựa chọn khắc chế nó (Game Balance 25). Đo bằng tỉ lệ trận kết thúc theo từng điều kiện thắng và % phát bắn rơi vào ô có hero.</p>
+      <p class="table-note"><b>Đề xuất:</b> prototype phương án A trước, vì một luật mở được 2 dynamic là D3 và D5. Mỗi lần chỉ đổi một quan hệ rồi đo lại, vì buff một lựa chọn có thể làm lợi cho lựa chọn khắc chế nó. Đo bằng tỉ lệ trận kết thúc theo từng điều kiện thắng và % phát bắn rơi vào ô có hero.</p>
     </div>
   </section>
 
-  <hr class="rule">
-  <footer>
-    <p>Biến lấy từ <code>repomix/castle-rivals-he-thong-tu-source.md</code> (code Castle Rivals build 1.0.14). Thuật ngữ: <code>concepts/gameplay-design-concepts.md</code>.</p>
-  </footer>
 
 </main>
 </div>
