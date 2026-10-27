@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MDA Castle Rivals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #17203A;
+    --slate: #3A4256;
+    --body: #5A6472;
+    --border: #DFE3EC;
+    --soft: #EDEFF4;
+    --accent: #FE5A16;
+    --card: #FFFFFF;
+    --bg: linear-gradient(160deg, #F4F6FA 0%, #EEF1F7 45%, #FBF3EE 100%);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: #F2F4F8; background-image: var(--bg); background-attachment: fixed;
+    color: var(--body); font: 400 16px/1.6 Montserrat, system-ui, sans-serif;
+  }
+  .shell { max-width: 1460px; margin: 0 auto; padding: 28px 32px 72px; }
+  .tabbar { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 0 4px; margin: 0 0 8px; padding-top: 8px; border-bottom: 1px solid var(--border); background: #F4F6FA; }
+  .tabbar button { appearance: none; background: transparent; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; padding: 12px 16px; font-family: Lexend, sans-serif; font-weight: 600; font-size: 15px; color: var(--slate); cursor: pointer; }
+  .tabbar button:hover { color: var(--navy); }
+  .tabbar button[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--accent); }
+  .tabbar button:focus-visible { outline: 2px solid var(--navy); outline-offset: -2px; }
+  .page { display: none; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; padding: 28px 0 0; }
+  .page.is-active { display: grid; }
+  .wrap { min-width: 0; max-width: 1180px; }
+
+  /* ---------- TOC ---------- */
+  .toc { position: sticky; top: 72px; align-self: start; max-height: calc(100vh - 96px); overflow-y: auto; }
+  .toc .mono { display: block; margin: 0 0 12px 12px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc a { display: block; padding: 7px 10px 7px 12px; border-left: 2px solid var(--border); color: var(--slate); text-decoration: none; font-size: 14px; line-height: 1.35; }
+  .toc a .n { margin-right: 6px; }
+  .toc ol ol a { padding-left: 26px; font-size: 13px; }
+  .toc a:hover { color: var(--navy); }
+  .toc a.active { border-left-color: var(--accent); color: var(--navy); font-weight: 600; background: rgba(255, 255, 255, .7); }
+  section, .sub-block { scroll-margin-top: 72px; }
+  .sub-title { font-size: 20px; margin: 40px 0 14px; }
+  .sub-title .no, h2 .no { margin-right: 10px; }
+  .mono { font-family: "Space Mono", ui-monospace, monospace; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; color: var(--slate); }
+  h1, h2, h3, h4 { font-family: Lexend, Montserrat, sans-serif; color: var(--navy); margin: 0; letter-spacing: -.01em; }
+  h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.08; margin: 10px 0 14px; }
+  h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 700; line-height: 1.15; margin: 8px 0 8px; }
+  h3 { font-size: 22px; font-weight: 700; line-height: 1.2; }
+  p { margin: 0; }
+  .lead { font-size: 19px; color: var(--slate); max-width: 860px; }
+  .lead b { color: var(--navy); }
+  .meta { margin-top: 18px; font-size: 13px; color: var(--body); }
+  section { margin-top: 72px; }
+  .sec-head { margin-bottom: 26px; }
+  .sec-head .sub { font-size: 17px; color: var(--slate); }
+  .rule { height: 2px; background: var(--accent); opacity: .75; margin-top: 64px; border: 0; }
+
+  /* ---------- Tables ---------- */
+  .table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; min-width: 760px; }
+  th, td { text-align: left; vertical-align: top; padding: 14px 18px; border-bottom: 1px solid var(--border); font-size: 15px; }
+  thead th { background: var(--soft); font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--slate); font-weight: 700; }
+  tbody tr:last-child td { border-bottom: 0; }
+  td:first-child { font-family: Lexend, sans-serif; font-weight: 600; color: var(--navy); white-space: nowrap; }
+  td small { display: block; font-family: "Space Mono", monospace; font-size: 11px; color: var(--body); font-weight: 400; letter-spacing: .04em; text-transform: uppercase; }
+  td b { color: var(--navy); }
+  .lean { font-family: Lexend, sans-serif; font-weight: 700; color: var(--navy); white-space: nowrap; }
+  .lean.even { font-weight: 500; color: var(--slate); }
+  .table-note { padding: 14px 18px; font-size: 14px; border-top: 1px solid var(--border); color: var(--body); }
+
+  /* ---------- F / I tags ---------- */
+  .fi { display: inline-block; font-family: "Space Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: .06em; line-height: 1; padding: 4px 7px; border-radius: 4px; margin: 0 4px 4px 0; white-space: nowrap; }
+  .fi.f { background: var(--navy); color: #fff; border: 1px solid var(--navy); }
+  .fi.i { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+  .key { display: inline-block; font-family: "Space Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 2px 7px; border-radius: 4px; }
+
+  /* ---------- Callout ---------- */
+  .verdict { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); color: var(--body); border-radius: 16px; padding: 28px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; }
+  .verdict.one { grid-template-columns: 1fr; }
+  .verdict h3 { font-family: Lexend, sans-serif; color: var(--navy); font-size: 18px; font-weight: 600; line-height: 1.35; margin: 6px 0 10px; }
+  .verdict .mono { color: var(--slate); }
+  .verdict p { font-size: 15px; color: var(--body); }
+  .verdict p + p { margin-top: 10px; }
+  .verdict b { color: var(--navy); font-weight: 600; }
+
+  /* ---------- Score ---------- */
+  .score { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 18px; }
+  .score div { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; flex: 1 1 220px; }
+  .num { font-family: Lexend, sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 40px); color: var(--navy); line-height: 1.05; display: block; overflow-wrap: anywhere; }
+  .num.lose { color: var(--slate); font-weight: 600; }
+  .score p { font-size: 14px; margin-top: 6px; }
+  .score b { color: var(--navy); }
+
+  /* ---------- Bảng Core / Phụ trợ ---------- */
+  .tbl-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin: 0 0 10px; }
+  .tbl-label b, details.aux > summary b { font-family: Lexend, sans-serif; font-weight: 700; font-size: 16px; color: var(--navy); white-space: nowrap; }
+  .tbl-label > span, details.aux > summary > span:not(.chev) { font-size: 14px; color: var(--slate); }
+  .vt td:first-child { white-space: normal; min-width: 200px; }
+  tr.grp td { background: #F8F9FC; font-family: Lexend, sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .04em; color: var(--slate); padding: 8px 18px; white-space: normal; }
+
+  /* Phụ trợ: toggle, mặc định thu lại */
+  details.aux { margin-top: 16px; }
+  details.aux > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; padding: 12px 18px 12px 40px; position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
+  details.aux > summary::-webkit-details-marker { display: none; }
+  details.aux > summary::before { content: ""; position: absolute; left: 18px; top: 19px; width: 7px; height: 7px; border-right: 2px solid var(--slate); border-bottom: 2px solid var(--slate); transform: rotate(-45deg); transition: transform .2s; }
+  details.aux[open] > summary::before { transform: rotate(45deg); top: 17px; }
+  details.aux > summary:hover { background: #F8F9FC; }
+  details.aux > summary:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+  details.aux[open] > summary { border-radius: 14px 14px 0 0; }
+  details.aux[open] > .table-wrap { border-top: 0; border-radius: 0 0 14px 14px; }
+  details.aux > summary .chev { margin-left: auto; font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--slate); }
+  details.aux > summary .chev .c { display: none; }
+  details.aux[open] > summary .chev .o { display: none; }
+  details.aux[open] > summary .chev .c { display: inline; }
+
+  footer { margin-top: 64px; font-size: 13px; color: var(--body); }
+  footer p + p { margin-top: 6px; }
+  footer a { color: var(--slate); }
+
+  @media (max-width: 1024px) {
+    .page { grid-template-columns: 1fr; gap: 0; }
+    .toc { position: static; max-height: none; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 12px; margin-bottom: 36px; }
+  }
+  @media (max-width: 860px) {
+    .shell { padding: 16px 16px 56px; }
+    .verdict { grid-template-columns: 1fr; padding: 24px 20px; }
+  }
+  code { font-family: "Space Mono", ui-monospace, monospace; font-size: .86em; background: var(--soft); padding: 1px 5px; border-radius: 4px; color: var(--navy); overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<div class="tabbar" role="tablist" aria-label="Phần phân tích">
+  <button type="button" role="tab" id="tab-mda" aria-controls="page-mda" aria-selected="true">MDA</button>
+  <button type="button" role="tab" id="tab-core" aria-controls="page-core" aria-selected="false" tabindex="-1">Mở rộng dynamic core</button>
+</div>
+
+<div class="page is-active" id="page-mda">
+
+<nav class="toc" aria-label="Mục lục">
+  <span class="mono">Mục lục</span>
+  <ol>
+    <li><a href="#page-mda">Tổng quan</a></li>
+    <li><a href="#s1"><span class="n">1.</span>Castle Rivals: quan sát</a>
+      <ol>
+        <li><a href="#s1-1"><span class="n">1.1</span>Mechanic</a></li>
+        <li><a href="#s1-2"><span class="n">1.2</span>Dynamic</a></li>
+        <li><a href="#s1-3"><span class="n">1.3</span>Aesthetic</a></li>
+        <li><a href="#s1-4"><span class="n">1.4</span>Đọc theo game vật lý</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+  <header>
+    <div class="mono">Doc nội bộ &nbsp;|&nbsp; Phân tích game design</div>
+    <h1>MDA — Castle Rivals</h1>
+    <p class="lead">Castle Rivals giao <b>Sensation</b> rất tốt: mỗi phát trúng móng kéo sập cả cột thành. Nhưng cảm giác <b>đấu với người</b> dựng trên 100% bot, và ba lối chơi chính đang gộp thành một phát bắn duy nhất.</p>
+  </header>
+
+  <!-- ============ 1. CASTLE RIVALS ============ -->
+  <section id="s1">
+    <div class="sec-head">
+      <h2><span class="no">1.</span>Castle Rivals: quan sát</h2>
+      <p class="sub">Đi M → D → A. Mechanic gần như toàn F vì đọc từ code. Càng lên cao càng nhiều I.</p>
+    </div>
+
+    <!-- ---------- 1.1 Mechanic ---------- -->
+    <h3 class="sub-title sub-block" id="s1-1"><span class="no">1.1</span>Mechanic: 6 core, 6 phụ trợ</h3>
+
+    <p class="tbl-label"><b>Core · 6</b><span>Có ngay từ trận tutorial. Bỏ đi thì vòng lặp gãy.</span></p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Mechanic</th><th>Luật</th></tr></thead>
+        <tbody>
+          <tr><td>Drag</td><td>Kéo xoay nòng theo hướng và góc nâng. Lực cố định.</td></tr>
+          <tr><td>Gió</td><td>Đổi mỗi lượt, 1–20 m/s². Biến khó chính của mỗi phát bắn.</td></tr>
+          <tr><td>Turn base</td><td>1 phát mỗi lượt, 30 giây. Hết giờ mất lượt. Giới hạn 18–24 lượt tính cả hai bên, tức mỗi bên 9–12 phát.</td></tr>
+          <tr><td>Damage</td><td>Trúng thẳng ăn đủ. Có tường chắn giữa thì còn 20%.</td></tr>
+          <tr><td>Sập theo ngưỡng</td><td>Ô còn ≤35% HP thì sập, lan dây chuyền. Hero trên ô sập chết ngay.</td></tr>
+          <tr><td>Điều kiện thắng</td><td>Hết HP thành hoặc hết hero. Hết lượt thì so % HP thành, hòa tính người chơi thua.</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note"><b>Vòng lặp:</b> Ngắm → Bắn → Trúng → Kết thúc?</p>
+    </div>
+
+    <details class="aux">
+      <summary><b>Phụ trợ · 6</b><span>Mở dần hoặc nằm ngoài trận. Bỏ đi trận vẫn chơi được.</span><span class="chev"><span class="o">Xem</span><span class="c">Thu lại</span></span></summary>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Mechanic</th><th>Xuất hiện</th><th>Luật</th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="3">Thêm chiều sâu</td></tr>
+          <tr><td>Chọn / đổi hero</td><td>Trận 3</td><td>Hero thứ 2 (Archer) mở sau trận 2. Tối đa 4 hero, mỗi hero 1 kiểu đạn. Phụ trợ trong trận, nhưng là core của meta và IAP.</td></tr>
+          <tr><td>Spell</td><td>Arena 5 hoặc 7</td><td>Mang 1 spell, dùng 1 lần mỗi trận, không tốn phát bắn. 9 spell dùng được.</td></tr>
+          <tr><td>Center Perk</td><td>Cuối arena 3</td><td>Xuất hiện ở khoảng 25% số lượt, di chuyển giữa sân. Đạn bay qua thì ×2 damage và bán kính nổ, hoặc tách thành 2 viên.</td></tr>
+          <tr class="grp"><td colspan="3">Hỗ trợ và hệ thống</td></tr>
+          <tr><td>Trajectory preview</td><td>Tutorial, trận 2</td><td>Đường bay có tính gió. Bánh xe tập: dạy rồi rút đi từ trận 3.</td></tr>
+          <tr><td>Xây thành, xếp hero</td><td>Sau trận 4</td><td>Ngoài trận. Tối đa 22 khối trên 27 ô. Mỗi hero phải đứng trên 1 ô đã xây.</td></tr>
+          <tr><td>Bot + MMR ẩn</td><td>Ẩn</td><td>100% bot. 4 trận đầu luôn tính thắng, 10 trận đầu đối thủ cố định. Sau đó độ khó chỉnh theo chuỗi thắng / thua.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+
+    <p class="meta">Cả 12 dòng đều là <span class="fi f">F</span>, đã đối chiếu với project Unity Castle Rivals ngày 26/10/2026. Số trận đếm cả trận tutorial: trận 1 là tutorial (bắn thành bia, AI không có lượt, không giới hạn lượt), trận đấu bot đầu tiên là trận 2. <b style="color:var(--navy)">So với outline ban đầu</b> (Drag, Turn base, Chỉnh hướng): "Chỉnh hướng" nằm trong Drag, và còn thiếu 4 core là gió, damage, luật sập, điều kiện thắng.</p>
+
+    <!-- ---------- 1.2 Dynamic ---------- -->
+    <h3 class="sub-title sub-block" id="s1-2"><span class="no">1.2</span>Dynamic: 11 lối chơi, 3 lối gộp làm một</h3>
+
+    <p class="tbl-label"><b>Core · 6</b><span>Sinh ra từ mechanic core, có ở mọi trận.</span></p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dynamic</th><th>Lối chơi</th><th>Sinh ra từ</th><th>Bằng chứng</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>D1</td><td><b>Đọc gió, chỉnh dần.</b> Phát đầu lệch, phát sau chỉnh theo chỗ rơi.</td><td>Gió đổi mỗi lượt, lực cố định, không preview</td><td>Suy từ luật. Chưa quan sát người chơi thật</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>D2</td><td><b>Đánh móng.</b> Bắn ô thấp hoặc ô đang đỡ để kéo sập cả cột.</td><td>Luật sập ≤35% / &lt;50%, sập dây chuyền</td><td>Smart AI (từ arena 4) chấm điểm ô: độ thấp ×4 (<code>structureLowHeightWeight</code>), gần hero ×3, cộng điểm "floor shot". Game tự dạy bot làm vậy</td><td><span class="fi f">F bot</span><span class="fi i">I người</span></td></tr>
+          <tr><td>D3</td><td><b>Săn hero.</b> Nhắm thẳng hero để thắng bằng điều kiện hết hero.</td><td>Điều kiện hết hero, trúng thẳng không bị giảm</td><td>Luật có. Chưa có tỉ lệ trận kết thúc theo điều kiện nào</td><td><span class="fi f">F luật</span><span class="fi i">I tần suất</span></td></tr>
+          <tr><td>D4</td><td><b>Phá thành.</b> Dồn HP thành đối thủ về 0.</td><td>Điều kiện hết HP thành, luật sập</td><td>Như D3</td><td><span class="fi f">F luật</span><span class="fi i">I tần suất</span></td></tr>
+          <tr><td>D5</td><td><b>Phá lớp che rồi mới hạ hero.</b> Hero sau tường gần như an toàn trước vụ nổ.</td><td>Block chắn giữa còn 20% damage</td><td>Luật có</td><td><span class="fi f">F luật</span><span class="fi i">I hành vi</span></td></tr>
+          <tr><td>D6</td><td><b>Giữ thành để thắng khi hết lượt</b> (lối Thủ).</td><td>Hết lượt so % HP thành</td><td>Luật có</td><td><span class="fi f">F luật</span><span class="fi i">I hành vi</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details class="aux">
+      <summary><b>Phụ trợ · 5</b><span>Sinh ra từ mechanic phụ trợ: hero, spell, perk, meta, bot.</span><span class="chev"><span class="o">Xem</span><span class="c">Thu lại</span></span></summary>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dynamic</th><th>Lối chơi</th><th>Sinh ra từ</th><th>Bằng chứng</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="5">Trong trận</td></tr>
+          <tr><td>D7</td><td><b>Chọn hero theo bài toán.</b> Đổi sang đạn hợp tình huống: khoan, xuyên tường, tia thẳng…</td><td>Đổi hero miễn phí, mỗi hero 1 kiểu đạn</td><td>16 vũ khí chia 5 vai trò</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>D8</td><td><b>Canh lượt tung spell.</b></td><td>Spell 1 lần / trận</td><td>—</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>D9</td><td><b>Bắn perk hay bắn thành.</b> Cơ hội lớn đổi lấy phát chắc chắn.</td><td>Center Perk giữa sân</td><td>Bot không nhắm perk: perk là lợi thế riêng của người có kỹ năng. Perk chỉ có ở khoảng 25% số lượt</td><td><span class="fi f">F bot</span><span class="fi i">I người</span></td></tr>
+          <tr class="grp"><td colspan="5">Ngoài trận</td></tr>
+          <tr><td>D10</td><td><b>Công hay thủ ở meta.</b> Nâng hero hay nâng thành.</td><td>Hero Upgrade, Castle Upgrade dùng chung Coin</td><td>Luật có</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>D11</td><td><b>Trận "vừa sức" có chủ đích.</b> Thua chuỗi thì bot yếu đi, thắng chuỗi thì bot mạnh lên.</td><td>Shadow Trophy, 4 trận đầu luôn tính thắng</td><td>Người chơi không thấy dynamic này</td><td><span class="fi f">F luật</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+
+    <div class="verdict one">
+      <div>
+        <span class="mono">Phát hiện chính &nbsp;·&nbsp; I, cần đo</span>
+        <h3>D2, D3, D4 gộp thành một phát: đánh móng dưới hero.</h3>
+        <p>Hero chết ngay khi ô dưới chân sập. Vì vậy một phát bắn vào móng ô có hero đứng làm cùng lúc 3 việc: <b>trừ HP thành, hạ hero, mở đường cho phát sau</b>. Smart AI của Castle Rivals ưu tiên đúng phát này (điểm "gần hero ×3" + "floor shot").</p>
+        <p>Game cạnh tranh cân bằng là game "không có chiến thuật nào vốn dĩ tốt hơn". Ở đây "focus hero" và "focus công trình" có khả năng không còn là hai lựa chọn khác nhau.</p>
+      </div>
+    </div>
+
+    <!-- ---------- 1.3 Aesthetic ---------- -->
+    <h3 class="sub-title sub-block" id="s1-3"><span class="no">1.3</span>Aesthetic: mạnh ở Sensation, yếu ở Fellowship</h3>
+    <div class="score" style="margin-top:0; margin-bottom:18px">
+      <div><span class="num">Sensation</span><p><b>Mạnh nhất.</b> Thành sập là promise của store và creative.</p></div>
+      <div><span class="num lose">Competition</span><p><b>Giả.</b> Đối thủ là bot, 4 trận đầu luôn thắng, độ khó bị chỉnh ẩn.</p></div>
+      <div><span class="num lose">Fellowship</span><p><b>Gần như không có.</b> Chỉ có emote. Ranking, league cũng là bot.</p></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Aesthetic</th><th>Cảm xúc / bản năng</th><th>Từ dynamic</th><th>Khoảnh khắc</th><th>Mức</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Sensation</td><td>Excitement, Joy</td><td>D2, D4</td><td>Camera bám đạn → ô sập từ dưới lên → slow-mo khi ô sập và khi hero chết</td><td class="lean">Mạnh nhất</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Challenge<small>Aim</small></td><td>Pride khi trúng khó; Anger khi thua, dẫn tới chơi lại</td><td>D1, D5, D7</td><td>Trúng ở lượt gió 16+</td><td class="lean">Mạnh</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Challenge<small>Đấu người</small></td><td>Competition, Aggressiveness, Revenge</td><td>D3, D4</td><td>"X GOES FIRST", emote của đối thủ</td><td class="lean even">Giả</td><td><span class="fi f">F bot</span><span class="fi i">I cảm nhận</span></td></tr>
+          <tr><td>Fantasy</td><td>Identification</td><td>Camera, theme</td><td>Góc nhìn sau pháo: góc nhìn thứ nhất tăng identification</td><td class="lean even">Trung bình</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Expression</td><td>Identification, Pride</td><td>D6, D10</td><td>Tự xếp hình thành, chọn chỗ cho hero</td><td class="lean even">Trung bình</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Discovery</td><td>Curiosity, Collecting</td><td>D7</td><td>Mở hero mới, thử kiểu đạn mới (27 hero)</td><td class="lean even">Trung bình</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Submission</td><td>—</td><td>—</td><td>Trận ngắn lặp lại, daily chest</td><td class="lean even">Có</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Fellowship</td><td>Communication</td><td>—</td><td>Chỉ có emote</td><td class="lean even">Gần như không</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Narrative</td><td>—</td><td>—</td><td>Không có</td><td class="lean even">Không</td><td><span class="fi f">F</span></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Với game multiplayer, <b>Competition xuất hiện sớm và dẫn dắt</b> chuỗi cảm xúc. Castle Rivals dựng Competition trên bot, nên đây là aesthetic dễ vỡ nhất.</p>
+    </div>
+
+    <!-- ---------- 1.4 Physics ---------- -->
+    <h3 class="sub-title sub-block" id="s1-4"><span class="no">1.4</span>Đọc theo game vật lý</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Game tham chiếu</th><th>Bài học</th><th>Castle Rivals</th><th>Đánh giá</th></tr></thead>
+        <tbody>
+          <tr><td>Paper Toss</td><td>Lực cố định, chỉ chọn hướng, lộ hết gió: vẫn đủ hấp dẫn</td><td>Lực cố định, gió hiện số + màu</td><td class="lean">Hợp</td></tr>
+          <tr><td>Paper Toss</td><td>Tăng độ khó bằng cách kéo dài thời gian vật lý tác động, không thêm luật</td><td>Lực gió tăng theo arena (1–12 → 2–20)</td><td class="lean">Hợp</td></tr>
+          <tr><td>Peggle</td><td>Lộ quỹ đạo đoạn đầu để người chơi kiểm soát, phần sau để hỗn loạn cho vui</td><td>Tắt preview từ trận 3</td><td class="lean"><span class="key">Rủi ro</span></td></tr>
+          <tr><td>Jenga</td><td>Cắt thẳng tới kịch tính sụp đổ</td><td>Trận tutorial bắn vào thành bia có gắn sẵn dynamite: ô sập thì dynamite nổ, thấy chain reaction ngay</td><td class="lean">Hợp</td></tr>
+          <tr><td>Nguyên tắc chung</td><td>Tinh chỉnh vật lý cho vui, không cho thật</td><td>Thành sập theo ngưỡng HP, mảnh vỡ chỉ để nhìn, không gây damage</td><td class="lean">Hợp</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Rủi ro ở dòng Peggle: vật lý quá mờ đục tạo cảm giác "bị phạt, bất công". Gió tới 20 m/s² mà không có đường ngắm là chỗ dễ gây churn (I).</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+  <footer>
+    <p>Số liệu đối chiếu với code Castle Rivals build 1.0.14 ngày 26/10/2026.</p>
+  </footer>
+
+</main>
+</div>
+
+<div class="page" id="page-core" hidden>
+
+<nav class="toc" aria-label="Mục lục mở rộng dynamic core">
+  <span class="mono">Mục lục</span>
+  <ol>
+    <li><a href="#page-core">Tổng quan</a></li>
+    <li><a href="#s2"><span class="n">2.</span>Mở rộng dynamic core</a>
+      <ol>
+        <li><a href="#s2-1"><span class="n">2.1</span>Cách đọc</a></li>
+        <li><a href="#s2-2"><span class="n">2.2</span>D1 Đọc gió</a></li>
+        <li><a href="#s2-3"><span class="n">2.3</span>D2 Đánh móng</a></li>
+        <li><a href="#s2-4"><span class="n">2.4</span>D3 Săn hero</a></li>
+        <li><a href="#s2-5"><span class="n">2.5</span>D4 Phá thành</a></li>
+        <li><a href="#s2-6"><span class="n">2.6</span>D5 Phá lớp che</a></li>
+        <li><a href="#s2-7"><span class="n">2.7</span>D6 Giữ thành</a></li>
+        <li><a href="#s2-8"><span class="n">2.8</span>Tổng hợp</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+  <header>
+    <div class="mono">Doc nội bộ &nbsp;|&nbsp; Quan sát → đề xuất</div>
+    <h1>Mở rộng dynamic core</h1>
+    <p class="lead">Trên luật, 6 dynamic core có nhiều biến thể. Người chơi thấy ít hơn: <b>một biến thể của D2 là kéo sập ô có hero nuốt cả D3, D4 và D5</b>. Tab này tách từng dynamic thành biến và biến thể, rồi đề xuất cách mở không gian cảm nhận.</p>
+  </header>
+
+  <section id="s2">
+    <div class="sec-head">
+      <h2><span class="no">2.</span>Mở rộng dynamic core</h2>
+      <p class="sub">Biến lấy từ code nên là F. Biến thể và đề xuất là suy luận, nên là I.</p>
+    </div>
+
+    <!-- ---------- 2.1 ---------- -->
+    <h3 class="sub-title sub-block" id="s2-1"><span class="no">2.1</span>Cách đọc: biến → biến thể → đánh giá → mở rộng</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Bước</th><th>Làm gì</th><th>Nguồn</th></tr></thead>
+        <tbody>
+          <tr><td>1. Biến</td><td>Liệt kê mechanic làm đổi cách chơi lối này</td><td>Fullerton 05</td></tr>
+          <tr><td>2. Biến thể</td><td>Ghi các cách chơi cụ thể người chơi chọn được, sinh ra từ tổ hợp giá trị của biến</td><td>—</td></tr>
+          <tr><td>3. Đánh giá</td><td>Hỏi từng biến thể: <i>"Khi nào đây là cách tốt nhất?"</i></td><td>Rollings &amp; Morris 03</td></tr>
+          <tr><td>4. Mở rộng</td><td>Đề xuất cách mở không gian cảm nhận bằng 4 công cụ: determinism, transitivity, information, symmetry</td><td>Game Balance 02</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note"><b>Đánh giá:</b> <b>Thú vị</b> là tốt nhất ở một số tình huống. <span class="key">Áp đảo</span> là gần như luôn tốt nhất. <b>Bị nuốt</b> là có biến thể khác làm cùng việc tốt hơn. <b>Cột "Cần":</b> Core là chơi được chỉ với mechanic core; Phụ trợ là cần thêm hero hoặc spell.</p>
+    </div>
+
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Trục</th><th>Câu hỏi</th><th>Dynamic core</th></tr></thead>
+        <tbody>
+          <tr><td>Ngắm</td><td>Trúng bằng cách nào?</td><td>D1</td></tr>
+          <tr><td>Mục tiêu</td><td>Bắn vào đâu?</td><td>D2, D3, D4, D5</td></tr>
+          <tr><td>Thế trận</td><td>Đua công hay giữ?</td><td>D6</td></tr>
+          <tr><td>Công cụ</td><td>Bắn bằng gì, khi nào tung?</td><td>Không có. Chỉ có ở phụ trợ (D7, D8)</td></tr>
+          <tr><td>Nhịp</td><td>Lượt này hay lượt sau?</td><td>Không có. Chỉ có ở vũ khí phụ trợ (Storm Orb, Time Bomb, Fire, Plague)</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Core chỉ phủ 3/5 trục, và 4/6 dynamic core nằm chung trục Mục tiêu. Vì vậy chỉ cần trục Mục tiêu hẹp là cả core hẹp theo.</p>
+    </div>
+
+    <div class="verdict one">
+      <div>
+        <span class="mono">Phát hiện chính &nbsp;·&nbsp; F luật, I hành vi</span>
+        <h3>Kéo sập ô có hero nuốt 3 dynamic, không chỉ 2.</h3>
+        <p>Tab MDA thấy D2, D3, D4 gộp làm một. Tách biến ra thì thấy thêm <b>D5 cũng bị nuốt</b>. Hero sau tường được che khỏi vụ nổ, nhưng không được che khỏi luật sập. Mỗi hero bắt buộc đứng trên 1 ô đã xây, nên ô nào có hero cũng kéo sập được.</p>
+        <p>Thêm vào đó, cell sập còn làm thành mất luôn phần HP còn lại (tới 35%). Nghĩa là kéo sập luôn rẻ hơn bào HP trực diện.</p>
+      </div>
+    </div>
+
+    <!-- ---------- 2.2 D1 ---------- -->
+    <h3 class="sub-title sub-block" id="s2-2"><span class="no">2.2</span>D1 Đọc gió, chỉnh dần: không gian thật đủ, người mới thiếu thông tin</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Gió</td><td>Đổi mỗi lượt. Lực gió tăng theo arena, từ 1–12 lên 2–20 m/s²</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Lực bắn</td><td>Cố định. Chỉ chỉnh hướng và góc nâng</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Preview</td><td>Có ở tutorial và trận 2, tắt từ trận 3</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Số phát</td><td>9–12 phát mỗi bên</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Đạn</td><td>Core: đạn thường, ăn gió. Phụ trợ: Beam, Time Bomb không ăn gió</td><td><span class="fi f">F</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap vt" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Bắn dò rồi chỉnh</td><td>Gió mạnh, mục tiêu lớn, còn nhiều lượt</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Bù theo số gió</td><td>Người chơi đã quen độ lệch ở từng mức gió</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Góc thấp: bay ngắn, ít ăn gió</td><td>Gió mạnh, đường bay không bị tường chắn</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Góc cao: vượt tường, ăn gió nhiều</td><td>Mục tiêu sau tường, gió yếu</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Né gió bằng đạn không ăn gió</td><td>Gió rất mạnh</td><td>Phụ trợ: Beam, Time Bomb</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note"><b>Mở rộng (đề xuất):</b> preview ngắn, không tính gió, như đã chọn trong P1 (Information). Không có preview, quyết định ngắm của người mới thành <i>impossible</i>: họ chọn bừa (Sylvester 05). Hai góc cùng chạm một điểm là suy từ lực cố định, cần kiểm trong build. Đánh đổi góc thấp / góc cao là chỗ D1 nối sang D5.</p>
+    </div>
+
+    <!-- ---------- 2.3 D2 ---------- -->
+    <h3 class="sub-title sub-block" id="s2-3"><span class="no">2.3</span>D2 Đánh móng: biến thể kéo sập ô có hero áp đảo</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Cấu trúc</td><td>Lưới 3×3 cột, mỗi cột cao tối đa 3 tầng. Mỗi ô (cell) là một đơn vị sập</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Ngưỡng sập</td><td>Cell còn ≤35% HP thì sập, và thành mất luôn phần HP còn lại của cell</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Đỡ</td><td>Cell ngay dưới luôn đỡ được. Cell bên cạnh chỉ đỡ khi còn ≥50% HP. Mất đỡ thì sập, lan dây chuyền</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Hero</td><td>Mỗi hero đứng trên 1 ô đã xây. Ô sập thì hero chết ngay</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Mặt cell</td><td>Mặt trong, giáp cell bên cạnh, yếu hơn mặt ngoài</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Đạn</td><td>Core: đạn thường. Phụ trợ: Drill khoan sâu, Saw cắt hàng đáy, Earthquake phá hàng đáy, Fire và Plague gây sát thương theo lượt</td><td><span class="fi f">F</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap vt" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Kéo sập ô có hero</td><td>Gần như luôn: cùng lúc trừ HP thành, hạ hero, mở đường cho phát sau</td><td>Core</td><td class="lean"><span class="key">Áp đảo</span></td><td><span class="fi f">F luật</span><span class="fi i">I hành vi</span></td></tr>
+          <tr><td>Kéo sập cột cao không có hero</td><td>Hero đứng ở chỗ khó với tới</td><td>Core</td><td class="lean even">Bị nuốt</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Hạ cell đỡ bên cạnh xuống dưới 50%</td><td>Bên cạnh có cell treo nhiều tầng</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Bóc mặt ngoài để lộ mặt trong yếu</td><td>Hàng trước đã vỡ</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Cắt hàng đáy, khoan sâu</td><td>Nhiều cell tầng dưới cùng hàng</td><td>Phụ trợ: Saw, Drill, Earthquake</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Mài dần qua nhiều lượt</td><td>Cell nhiều HP, còn nhiều lượt</td><td>Phụ trợ: Fire, Plague</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note"><b>Bằng chứng:</b> Smart AI chấm điểm ô thấp ×4, gần hero ×3, cộng điểm "floor shot". Bot được dạy đúng biến thể áp đảo. <b>Mở rộng:</b> đổi một quan hệ để biến thể này không còn làm 3 việc cùng lúc. Xem 2.8.</p>
+    </div>
+
+    <!-- ---------- 2.4 D3 ---------- -->
+    <h3 class="sub-title sub-block" id="s2-4"><span class="no">2.4</span>D3 Săn hero: bị biến thể kéo sập ô nuốt</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Trúng thẳng</td><td>Không giảm theo khoảng cách, không bị chắn</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Nổ gần</td><td>Giảm dần từ tâm nổ ra mép. Có block nguyên chắn giữa thì còn 20%</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Chết theo ô</td><td>Ô dưới chân sập thì chết ngay, bất kể HP còn bao nhiêu</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Kiểm tra thắng</td><td>Hết hero chỉ được xét ở cuối lượt</td><td><span class="fi f">F</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap vt" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Trúng thẳng hero đứng lộ</td><td>Hero ở tầng cao, không có gì che</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Hạ hero yếu máu trước</td><td>Hero còn ít HP, đứng lộ</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Nổ sát hero</td><td>Hero lộ một phần</td><td>Core</td><td class="lean even">Bị nuốt</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Kéo sập ô dưới hero</td><td>Gần như luôn</td><td>Core</td><td class="lean"><span class="key">Áp đảo</span></td><td><span class="fi f">F luật</span></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Trúng thẳng chỉ đáng bắn khi ô dưới hero khó sập. Với luật hiện tại, ô nào có hero cũng kéo sập được, nên đánh thẳng vào hero hiếm khi là lựa chọn tốt nhất.</p>
+    </div>
+
+    <!-- ---------- 2.5 D4 ---------- -->
+    <h3 class="sub-title sub-block" id="s2-5"><span class="no">2.5</span>D4 Phá thành: kéo sập luôn rẻ hơn bào HP</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>HP thành</td><td>Tổng HP các cell. UI hiện %</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Thưởng khi sập</td><td>Cell sập mất luôn phần HP còn lại (≤35%). Cell treo phía trên mất đỡ thì sập theo</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Thắng ngay</td><td>HP thành địch về 0 thì thắng ngay, không đợi hết lượt</td><td><span class="fi f">F</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap vt" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Bỏ hero, dồn hết vào thành</td><td>HP thành địch đã thấp, hero địch núp kỹ</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Bào HP trực diện</td><td>Không có ô nào gần ngưỡng sập</td><td>Core</td><td class="lean even">Bị nuốt</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Kéo sập để ăn phần HP thưởng</td><td>Gần như luôn</td><td>Core</td><td class="lean"><span class="key">Áp đảo</span></td><td><span class="fi f">F luật</span></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Vì sập cho thêm HP miễn phí, phát phá thành hiệu quả nhất luôn là phát đánh móng. D4 không có đường đi riêng tách khỏi D2.</p>
+    </div>
+
+    <!-- ---------- 2.6 D5 ---------- -->
+    <h3 class="sub-title sub-block" id="s2-6"><span class="no">2.6</span>D5 Phá lớp che: chỉ đáng làm khi không kéo sập được ô dưới hero</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Chắn</td><td>Chỉ tính block nguyên gần nhất. Block đã vỡ rời không chắn nữa</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Damage sau chắn</td><td>Còn 20%</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Trúng thẳng</td><td>Không bị chắn</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Đạn xuyên</td><td>Phụ trợ: Boomerang, Phantom, Beam bỏ qua lớp che</td><td><span class="fi f">F</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap vt" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Bắn góc cao, rơi trúng thẳng</td><td>Hero ở tầng trên, phía trên không có gì che</td><td>Core</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Dùng đạn xuyên</td><td>Hero sau nhiều lớp tường</td><td>Phụ trợ: Boomerang, Phantom, Beam</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Phá block chắn rồi mới nổ</td><td>Hero sau 1 lớp tường</td><td>Core</td><td class="lean even">Bị nuốt</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Bỏ qua lớp che, kéo sập ô dưới hero</td><td>Gần như luôn</td><td>Core</td><td class="lean"><span class="key">Áp đảo</span></td><td><span class="fi i">I</span></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Lớp che chỉ chặn vụ nổ, không chặn luật sập. Phá lớp che rồi mới nổ tốn thêm phát bắn. Kéo sập ô dưới hero thì hạ hero và trừ HP thành ngay trong cùng phát.</p>
+    </div>
+
+    <!-- ---------- 2.7 D6 ---------- -->
+    <h3 class="sub-title sub-block" id="s2-7"><span class="no">2.7</span>D6 Giữ thành: core không có hành động thủ, chỉ có đua % HP</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Biến</th><th>Giá trị</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Giới hạn lượt</td><td>18–24 lượt tính cả hai bên, theo arena. Banner "3 / 2 / LAST" ở 3 lượt cuối</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Hết lượt</td><td>So % HP thành. Hòa tính người chơi thua. Không có sudden death</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Hành động thủ trong trận</td><td>Core: không có, không sửa và không che được. Phụ trợ: spell Shield, Smoke</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Thủ ngoài trận</td><td>Phụ trợ: tự xếp thành, chọn ô cho hero</td><td><span class="fi f">F</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap vt" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Biến thể</th><th>Khi nào tốt nhất</th><th>Cần</th><th>Đánh giá</th><th>F/I</th></tr></thead>
+        <tbody>
+          <tr><td>Đang dẫn % HP: bắn chắc</td><td>Gần hết lượt, dẫn ít</td><td>Core</td><td class="lean">Thú vị, nếu thấy rõ thế trận</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Đang thua: bắn rủi ro</td><td>Gần hết lượt, đang thua</td><td>Core</td><td class="lean">Thú vị, nếu thấy rõ thế trận</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Tung Shield hoặc Smoke</td><td>Gần hết lượt, đang dẫn</td><td>Phụ trợ: spell</td><td class="lean">Thú vị</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Xếp thành phòng thủ trước trận</td><td>Ngoài trận</td><td>Phụ trợ: xây thành</td><td class="lean even">Chưa rõ</td><td><span class="fi i">I</span></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Trong core, "giữ thành" thực chất là <b>đua % HP</b>, vì không có hành động phòng thủ nào. Lựa chọn chỉ xuất hiện khi người chơi đọc được thế trận: % HP hai bên và số lượt còn lại.</p>
+    </div>
+
+    <!-- ---------- 2.8 Tổng hợp ---------- -->
+    <h3 class="sub-title sub-block" id="s2-8"><span class="no">2.8</span>Tổng hợp: sửa một quan hệ ở D2 mở lại ba dynamic</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dynamic</th><th>Không gian cảm nhận</th><th>Nguyên nhân</th><th>Mở bằng</th><th>Công cụ</th></tr></thead>
+        <tbody>
+          <tr><td>D1 Đọc gió</td><td class="lean even">Vừa</td><td>Mất preview từ trận 3</td><td>Preview ngắn, không tính gió (P1)</td><td>Information</td></tr>
+          <tr><td>D2 Đánh móng</td><td class="lean">Hẹp</td><td>Kéo sập ô có hero áp đảo</td><td>Đổi quan hệ giữa hero và ô sập (bảng dưới)</td><td>Intransitivity</td></tr>
+          <tr><td>D3 Săn hero</td><td class="lean">Bị nuốt</td><td>Như D2</td><td>Theo D2</td><td>—</td></tr>
+          <tr><td>D4 Phá thành</td><td class="lean">Bị nuốt</td><td>Như D2, cộng HP thưởng khi sập</td><td>Theo D2, hoặc bỏ HP thưởng</td><td>—</td></tr>
+          <tr><td>D5 Phá lớp che</td><td class="lean">Bị nuốt</td><td>Lớp che không chặn luật sập</td><td>Theo D2</td><td>—</td></tr>
+          <tr><td>D6 Giữ thành</td><td class="lean">Hẹp</td><td>Không thấy rõ thế trận, không có hành động thủ</td><td>Hiện % HP hai bên và số lượt còn lại</td><td>Information</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Phương án đổi quan hệ</th><th>D3</th><th>D4</th><th>D5</th><th>Rủi ro</th></tr></thead>
+        <tbody>
+          <tr><td>A. Hero rơi theo ô sập, <br>mất % HP thay vì chết ngay</td><td>Mở: phải trúng thẳng hoặc đánh nhiều lần</td><td>Giữ nguyên</td><td>Mở: lớp che có giá trị lại</td><td>Mất khoảnh khắc hero chết theo ô, một nguồn Sensation</td></tr>
+          <tr><td>B. Cell sập không trừ <br>phần HP còn lại vào thành</td><td>Giữ nguyên</td><td>Mở: bào HP và kéo sập ngang giá hơn</td><td>Giữ nguyên</td><td>Sập bớt "đã" vì không còn là phát lời nhất</td></tr>
+          <tr><td>C. Ô có hero đứng <br>khó sập hơn</td><td>Mở một phần</td><td>Giữ nguyên</td><td>Mở một phần</td><td>Người chơi khó đọc ô nào khó sập</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note"><b>Đề xuất:</b> prototype phương án A trước, vì một luật mở được 2 dynamic là D3 và D5. Mỗi lần chỉ đổi một quan hệ rồi đo lại, vì buff một lựa chọn có thể làm lợi cho lựa chọn khắc chế nó (Game Balance 25). Đo bằng tỉ lệ trận kết thúc theo từng điều kiện thắng và % phát bắn rơi vào ô có hero.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+  <footer>
+    <p>Biến lấy từ <code>repomix/castle-rivals-he-thong-tu-source.md</code> (code Castle Rivals build 1.0.14). Thuật ngữ: <code>concepts/gameplay-design-concepts.md</code>.</p>
+  </footer>
+
+</main>
+</div>
+
+</div>
+<script>
+(function () {
+  var tabs = [].slice.call(document.querySelectorAll("[role=tab]"));
+  var pages = tabs.map(function (t) { return document.getElementById(t.getAttribute("aria-controls")); });
+  function show(i) {
+    tabs.forEach(function (t, n) {
+      var on = n === i;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      pages[n].hidden = !on;
+      pages[n].classList.toggle("is-active", on);
+    });
+    if (history.replaceState) history.replaceState(null, "", "#" + pages[i].id);
+    window.scrollTo(0, 0);
+    update();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { show(i); });
+    t.addEventListener("keydown", function (e) {
+      var next = e.key === "ArrowRight" ? (i + 1) % tabs.length : e.key === "ArrowLeft" ? (i + tabs.length - 1) % tabs.length : -1;
+      if (next < 0) return;
+      e.preventDefault();
+      show(next);
+      tabs[next].focus();
+    });
+  });
+  function update() {
+    var page = document.querySelector(".page.is-active");
+    if (!page) return;
+    var links = [].slice.call(page.querySelectorAll(".toc a"));
+    var targets = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+    var y = window.scrollY + 120, idx = 0;
+    targets.forEach(function (t, n) { if (t && t.getBoundingClientRect().top + window.scrollY <= y) idx = n; });
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) idx = links.length - 1;
+    links.forEach(function (a, n) { a.classList.toggle("active", n === idx); });
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); } }, { passive: true });
+  window.addEventListener("resize", update);
+  var start = pages.findIndex(function (p) { return location.hash === "#" + p.id; });
+  if (start > 0) show(start);
+  else update();
+})();
+</script>
+</body>
+</html>
