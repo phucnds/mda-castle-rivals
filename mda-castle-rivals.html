@@ -303,7 +303,7 @@
     <p class="meta" style="margin:0 0 14px">Mức mạnh / yếu là đánh giá của doc, chưa có dữ liệu người chơi. Riêng Competition và Fellowship dựa trên dữ liệu <span class="fi f">F</span>: luật của bot đối thủ, chỉ có emote. Đối thủ là bot, được coi như một player.</p>
     <div class="score" style="margin-top:0; margin-bottom:18px">
       <div><span class="num">Sensation</span><p><b>Mạnh nhất.</b> Thành sập là promise của store và creative.</p></div>
-      <div><span class="num lose">Competition</span><p><b>Tới muộn.</b> Trận 2–6 bot cố ý bắn hỏng 100%, 4 trận đầu luôn tính thắng. Đối thủ chỉ ra dáng từ arena 4.</p></div>
+      <div><span class="num lose">Competition</span><p><b>Tới muộn.</b> Trận 2–6 mọi phát bắn của bot đều bị lệch ngẫu nhiên khỏi mục tiêu, 4 trận đầu luôn tính thắng. Đối thủ chỉ ra dáng từ arena 4.</p></div>
       <div><span class="num lose">Fellowship</span><p><b>Gần như không có.</b> Chỉ có emote. Ranking, league cũng là bot.</p></div>
     </div>
     <div class="table-wrap">
@@ -321,7 +321,7 @@
           <tr><td>Narrative</td><td>—</td><td>—</td><td>Không có</td><td class="lean even">Không</td><td><span class="fi f">F</span></td></tr>
         </tbody>
       </table>
-      <p class="table-note">Với game multiplayer, <b>Competition xuất hiện sớm và dẫn dắt</b> chuỗi cảm xúc. Ở Castle Rivals, Competition tới muộn: trước arena 4, bot cố ý bắn hỏng nhiều và người chơi gần như luôn thắng (tab AI đối thủ). Vì vậy đây là aesthetic dễ vỡ nhất ở giai đoạn đầu.</p>
+      <p class="table-note">Với game multiplayer, <b>Competition xuất hiện sớm và dẫn dắt</b> chuỗi cảm xúc. Ở Castle Rivals, Competition tới muộn: trước arena 4, bot cố ý ngắm lệch nhiều phát và người chơi gần như luôn thắng (tab AI đối thủ). Vì vậy đây là aesthetic dễ vỡ nhất ở giai đoạn đầu.</p>
     </div>
 
     <!-- ---------- 1.5 Physics ---------- -->
@@ -786,7 +786,7 @@
           <tr><td>Cộng dồn</td><td>Cast lại cùng spell chỉ làm mới thời gian, không cộng chỉ số. Buff từ nguồn khác nhau thì cộng lại</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Nhận thẻ</td><td>Rương: thẻ spell chia cho một spell ngẫu nhiên đã mở. IAP: gói Vip2 có 100 thẻ Earthquake. Shop thường không bán spell</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Nâng cấp</td><td>Vàng và thẻ, cùng thang giá với hero, trần cấp 50</td><td><span class="fi f">F</span></td></tr>
-          <tr><td>Bot</td><td>Mang 1 spell ngẫu nhiên trong các spell player đã mở. 20% số lượt có cast, trước khi ngắm. Lượt "bắn hỏng" không cast. Cấp spell của bot là 1, từ 1.250 trophy là 5, tối đa 25</td><td><span class="fi f">F</span></td></tr>
+          <tr><td>Bot</td><td>Mang 1 spell ngẫu nhiên trong các spell player đã mở. 20% số lượt có cast, trước khi ngắm. Lượt "ngắm lệch" không cast. Cấp spell của bot là 1, từ 1.250 trophy là 5, tối đa 25</td><td><span class="fi f">F</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -1008,7 +1008,6 @@
         <li><a href="#s5-4"><span class="n">5.4</span>Năm con số</a></li>
         <li><a href="#s5-5"><span class="n">5.5</span>Pyramid</a></li>
         <li><a href="#s5-6"><span class="n">5.6</span>Cây quyết định</a></li>
-        <li><a href="#s5-7"><span class="n">5.7</span>Chưa chốt</a></li>
       </ol>
     </li>
   </ol>
@@ -1019,7 +1018,7 @@
   <header>
     <div class="mono">Doc nội bộ &nbsp;|&nbsp; Quan sát → quyết định</div>
     <h1>Teardown — Castle Rivals</h1>
-    <p class="lead">Castle Rivals ghép aim theo lượt của Archery Clash! với hook <b>phá thành</b>. Phần phá thành giữ lời từ trận 2, vì trận 1 chỉ bắn các tấm bia. Đối thủ <b>PvP</b> là bot, coi như một player, nhưng chỉ chơi ra dáng đối thủ từ arena 4. Audience là ô trống lớn nhất: target mượn từ Archery Clash!, mô hình kiếm tiền mượn từ Castle Busters.</p>
+    <p class="lead">Castle Rivals ghép aim theo lượt của Archery Clash! với hook <b>phá thành</b>. Phần phá thành giữ lời từ trận 2, vì trận 1 chỉ bắn các tấm bia. Đối thủ <b>PvP</b> là bot, coi như một player, mạnh dần theo arena. Audience là ô trống lớn nhất: target mượn từ Archery Clash!, mô hình kiếm tiền mượn từ Castle Busters.</p>
   </header>
 
   <!-- ============ 5. TEARDOWN ============ -->
@@ -1034,7 +1033,7 @@
       <table>
         <thead><tr><th>Đầu vào</th><th>Hiện có</th><th>Cây ở 5.6 dùng tạm</th><th>F/I</th></tr></thead>
         <tbody>
-          <tr><td>Audience của mình</td><td>Chưa chốt. Hai ứng viên: nam 25–44 và nữ 45+ (5.4, 5.7)</td><td>Nam 25–44, Mỹ / Đức / UK, chịu chi IAP</td><td><span class="fi i">I</span></td></tr>
+          <tr><td>Audience của mình</td><td>Chưa chốt. Hai ứng viên: nam 25–44 và nữ 45+ (5.4)</td><td>Nam 25–44, Mỹ / Đức / UK, chịu chi IAP</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Promise của mình</td><td>Chưa viết thành một câu. Mới có các USP ứng viên</td><td>Nhìn thành đối thủ sập sau một phát bắn đúng chỗ</td><td><span class="fi i">I</span></td></tr>
           <tr><td>Constraint</td><td>Chưa có: team, thời gian, budget</td><td>Không dùng. Vì vậy chưa nhánh nào qua được cửa chặn</td><td>—</td></tr>
         </tbody>
@@ -1075,14 +1074,14 @@
     <!-- ---------- 5.2 Promise và giá trị ---------- -->
     <h3 class="sub-title sub-block" id="s5-2"><span class="no">5.2</span>Promise và giá trị: giữ lời phần phá thành, PvP là bot</h3>
     <div class="score" style="margin-top:0; margin-bottom:18px">
-      <div><span class="num">Giữ lời</span><p><b>Thành sập ở trận 2, ngay sau trận bắn bia.</b> Mở app là vào trận. Trận 1 chỉ có các tấm bia, chưa có lâu đài, chưa thấy ô sập. Trận 2 là trận đấu bot đầu tiên, có thành và ô sập. Trận 1–4 luôn tính thắng: trận 1–2 không có thưởng và trophy, trận 3–4 thua vẫn nhận thưởng và trophy như trận thắng.</p></div>
-      <div><span class="num lose">Muộn</span><p><b>Đối thủ ra dáng từ arena 4.</b> Trận 2–6 bot cố ý bắn hỏng 100%. Từ trận 7 tới hết arena 3, bot bắn hỏng 25% và chọn mục tiêu ngẫu nhiên. Từ arena 4, bot bắn hỏng 5%, chọn mục tiêu bằng điểm, và MMR ẩn bắt đầu chạy: tăng khi thắng chuỗi (trận thắng đầu chuỗi cộng 0), giảm khi thua chuỗi, reset lúc 03:00 mỗi ngày.</p></div>
+      <div><span class="num">Giữ lời</span><p><b>Phá thành có ngay từ đầu.</b> Mở app là vào trận. Qua màn bắn bia hướng dẫn là tới trận phá thành đầu tiên. Mấy trận đầu luôn tính là thắng.</p></div>
+      <div><span class="num">Tăng dần</span><p><b>Bot mạnh dần theo bậc, sớm hay muộn tùy người chơi.</b> Trận 2–6, mọi phát bắn của bot đều bị lệch ngẫu nhiên khỏi mục tiêu (tới 6 m sang ngang, 4 m trước sau). Từ trận 7 tới hết arena 3, 25% số phát bị lệch và bot chọn mục tiêu ngẫu nhiên. Từ arena 4, còn 5% số phát bị lệch, bot chọn mục tiêu bằng điểm, và MMR ẩn bắt đầu chạy: tăng khi thắng chuỗi (trận thắng đầu chuỗi cộng 0), giảm khi thua chuỗi, reset lúc 03:00 mỗi ngày. Người chơi giỏi có thể thấy bot dễ trong thời gian dài, người mới có thể thấy vừa sức.</p></div>
     </div>
     <div class="table-wrap vt">
       <table>
         <thead><tr><th>Store hứa</th><th>Game giao</th><th>Đánh giá</th><th>F/I</th></tr></thead>
         <tbody>
-          <tr><td>PvP castle duel</td><td>Đối thủ là bot, coi như một player. Trước trận có màn tìm đối thủ khoảng 3.7 giây. Bot mang tên giống tên người chơi, lấy từ danh sách 622 tên, và có emote. Từ arena 3, bot thỉnh thoảng rớt mạng giữa trận. Trận 2–6 bot cố ý bắn hỏng 100%. Bot chỉ chơi ra dáng đối thủ từ arena 4</td><td class="lean even">Muộn</td><td><span class="fi f">F luật bot</span><span class="fi i">I cảm nhận</span></td></tr>
+          <tr><td>PvP castle duel</td><td>Đối thủ là bot, coi như một player. Trước trận có màn tìm đối thủ khoảng 3.7 giây. Bot mang tên giống tên người chơi, lấy từ danh sách 622 tên, và có emote. Từ arena 3, bot thỉnh thoảng rớt mạng giữa trận. Trận 2–6 mọi phát bắn của bot đều bị lệch ngẫu nhiên khỏi mục tiêu, rồi mạnh dần, mạnh nhất từ arena 4</td><td class="lean even">Tùy người chơi</td><td><span class="fi f">F luật bot</span><span class="fi i">I cảm nhận</span></td></tr>
           <tr><td>Physics destruction</td><td>Luật sập rule-based (35% / 50%), không dùng physics. Physics lo mảnh vỡ văng ra. Hình dạng gạch còn nguyên vẫn quyết định vụ nổ có bị che hay không</td><td class="lean">Giữ</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Chain reaction</td><td>Có từ trận 2, trận đấu bot đầu tiên: thành địch là một cột 2 tầng, phá tầng đáy thì tầng trên mất chỗ đỡ và sập theo. Trận 1 không có: chỉ có các tấm bia, chưa có lâu đài, chưa thấy ô sập</td><td class="lean">Giữ, từ trận 2</td><td><span class="fi f">F</span></td></tr>
           <tr><td>Weak point</td><td>Bắn móng ô để kéo sập phần trên. Không có điểm yếu đánh dấu trên màn hình</td><td class="lean even">Giữ một phần</td><td><span class="fi f">F luật</span><span class="fi i">I người chơi tự hiểu</span></td></tr>
@@ -1090,7 +1089,7 @@
           <tr><td>Nâng cấp lâu đài</td><td>Tab Castle mở từ 60% arena 1, tutorial xây chạy sau trận 4. Xây mất thời gian, tối đa 3 builder, skip bằng gem hoặc xem ad giảm nửa thời gian</td><td class="lean">Giữ</td><td><span class="fi f">F</span></td></tr>
         </tbody>
       </table>
-      <p class="table-note">Promise hỏng theo 3 cách: không thực hiện, thực hiện muộn, thực hiện rồi tự mâu thuẫn. Castle Rivals có 2 chỗ "muộn": skill (spell mở ở arena 5 hoặc 7) và đối thủ ra dáng (từ arena 4). Đối thủ là bot được coi như một player, nên promise PvP không tính theo việc đối thủ là người hay máy, mà tính theo việc bot có chơi như một đối thủ không. Kết luận này trùng với tab MDA mục 1.4: Competition tới muộn. Bot ở trận 2–6 có bị chê là quá dở không thì chưa có review mining để xác nhận <span class="fi i">I</span>.</p>
+      <p class="table-note">Promise hỏng theo 3 cách: không thực hiện, thực hiện muộn, thực hiện rồi tự mâu thuẫn. Castle Rivals có 1 chỗ "muộn": skill (spell mở ở arena 5 hoặc 7). Đối thủ là bot được coi như một player, nên promise PvP không tính theo việc đối thủ là người hay máy, mà tính theo việc bot có chơi như một đối thủ không. Bot mạnh dần theo bậc, nhưng mạnh tới mức đó là sớm hay muộn còn tùy kỹ năng người chơi, nên chưa đánh giá được. Cần review mining hoặc data thắng thua theo arena để xác nhận <span class="fi i">I</span>.</p>
     </div>
 
     <!-- ---------- 5.3 Câu 5–8 ---------- -->
@@ -1167,7 +1166,7 @@
     <p class="meta">Phần bổ sung, không thuộc 8 câu. Base và Retention đọc từ hệ thống có thật <span class="fi f">F</span>. Mức độ là đánh giá của doc <span class="fi i">I</span>.</p>
 
     <!-- ---------- 5.6 Giữ gì, đổi gì ---------- -->
-    <h3 class="sub-title sub-block" id="s5-6"><span class="no">5.6</span>Cây quyết định: giữ luật sập và aim, khác ở weak point và replay</h3>
+    <h3 class="sub-title sub-block" id="s5-6"><span class="no">5.6</span>Cây quyết định: giữ luật sập và aim, khác ở weak point</h3>
     <div class="table-wrap vt">
       <table>
         <thead><tr><th>Câu</th><th>Hỏi gì</th><th>Trả lời → kết quả</th></tr></thead>
@@ -1192,36 +1191,18 @@
           <tr class="grp"><td colspan="4">Adapt · giữ nhu cầu, chỉnh cho audience mình</td></tr>
           <tr><td>Preview tắt từ trận 3</td><td>A có: người mới cần ngắm được khi gió mạnh. B không. C không: gió tới 20 mà không có trợ giúp dễ thành cảm giác bị phạt. D không</td><td>Thêm preview đoạn đầu, không tính gió. Khớp đề xuất ở tab MDA mục 1.3</td><td>Có data churn ở trận 3–5</td></tr>
           <tr><td>1 spell mỗi trận, mở arena 5–7</td><td>A có: skill là một phần của promise. B không. C không: mở muộn nên promise tới muộn. D không</td><td>Giữ spell, mở sớm hơn</td><td>Chốt đường mở feature</td></tr>
-          <tr><td>Đối thủ là bot, coi như player: trận 2–6 cố ý bắn hỏng 100%, độ khó nhảy một bậc ở arena 4</td><td>A có: audience cần một đối thủ vừa sức. B không. C không: đối thủ quá dở ở trận đầu rồi khó lên đột ngột ở arena 4. D không</td><td>Giữ đối thủ bot, rẻ và scale được lúc CCU thấp. Bỏ kiểu bắn hỏng 100%, cho độ khó lên đều thay vì nhảy ở arena 4. Real PvP vẫn để ở phase Live</td><td>Có churn theo arena và review mining</td></tr>
+          <tr><td>Đối thủ là bot, coi như player: trận 2–6 mọi phát bắn đều bị lệch ngẫu nhiên khỏi mục tiêu, từ trận 7 còn 25% số phát, từ arena 4 còn 5% và bot chọn mục tiêu bằng điểm</td><td>A có: audience cần một đối thủ vừa sức. B không. C chưa rõ <span class="fi i">I</span>: bot đổi độ khó theo bậc, người chơi có thấy hụt hẫng hay không còn tùy kỹ năng, cần review mining. D không</td><td>Giữ đối thủ bot, rẻ và scale được lúc CCU thấp. Bỏ kiểu lệch mọi phát, cho độ khó lên đều thay vì đổi theo bậc. Real PvP vẫn để ở phase Live</td><td>Có churn theo arena và review mining</td></tr>
           <tr><td>FTUE vào thẳng trận. Trận 1 chỉ bắn các tấm bia, chưa có lâu đài, chưa thấy ô sập. Thành sập tới ở trận 2. Trận 1–4 luôn tính thắng</td><td>A có: promise phải tới ngay session đầu. B không. C không: trận đầu chưa cho thấy thành sập, tức chưa giao promise tạm. D không</td><td>Giữ vào thẳng trận và luôn thắng, nhưng cho thấy ô sập ngay trận 1</td><td>Có số D1 của game mình</td></tr>
           <tr class="grp"><td colspan="4">Differentiate · làm khác bằng lợi thế riêng</td></tr>
           <tr><td>Weak point không đánh dấu</td><td>A có. B không. C không: người chơi phải tự hiểu luật sập. D có: góc tiếp cận riêng là hook "một phát trúng" đọc được trên creative</td><td>Điểm yếu nhìn thấy được, để creative và người mới cùng đọc được một phát trúng</td><td>Có IPM của creative</td></tr>
-          <tr><td>Không share, không replay</td><td>A có <span class="fi i">I</span>: người chơi muốn khoe phát đẹp. B không. C không: họ không có. D có: góc tiếp cận replay và UGC</td><td>Kill-cam để người chơi có nội dung tự đăng. Archery Clash! có social proof nhờ việc này</td><td>Có review mining</td></tr>
           <tr class="grp"><td colspan="4">Investigate · câu A chưa trả lời được</td></tr>
-          <tr><td>IAP là chính, ads chỉ có rewarded</td><td>A chưa rõ: ai trả tiền cho game mình chưa chốt (5.7)</td><td>Chưa quyết mô hình tiền</td><td>Chốt audience</td></tr>
+          <tr><td>IAP là chính, ads chỉ có rewarded</td><td>A chưa rõ: ai trả tiền cho game mình chưa chốt</td><td>Chưa quyết mô hình tiền</td><td>Chốt audience</td></tr>
           <tr><td>Timer xây, skip bằng gem hoặc ad</td><td>A chưa rõ: tệp chơi vài phút có chịu chờ xây không. Timer cũng là sink chính của IAP</td><td>Chưa quyết</td><td>Chốt audience và mô hình tiền</td></tr>
           <tr><td>Battle Pass 14 ngày theo từng người</td><td>A chưa rõ: chưa có số conversion, chưa so được với season chung</td><td>Chưa quyết</td><td>Có số conversion</td></tr>
           <tr><td>Hòa tính người chơi thua</td><td>A chưa rõ: có thể đây là thứ người chơi duel kỳ vọng</td><td>Ứng viên để bỏ. Cần xem review 1–2 sao trước</td><td>Có review mining</td></tr>
         </tbody>
       </table>
       <p class="table-note">Mỗi dòng là một thứ Castle Rivals làm ở câu 4–8, đưa qua cây. Câu A dùng audience và promise tạm ở phần Đầu vào. Cả bảng <b>chưa qua cửa chặn</b> vì chưa có constraint, nên chưa có dòng Ignore có chủ đích và mọi nhánh vẫn là ứng viên <span class="fi i">I</span>.</p>
-    </div>
-
-    <!-- ---------- 5.7 Chưa chốt ---------- -->
-    <h3 class="sub-title sub-block" id="s5-7"><span class="no">5.7</span>Chưa chốt: ai trả tiền, và constraint của team</h3>
-    <div class="verdict">
-      <div>
-        <span class="mono">Câu hỏi mở</span>
-        <h3>Ai trả tiền cho game mình?</h3>
-        <p>Đo creative cho cả <b>nam 25–44</b> và <b>nữ 45+</b>. RPD theo theme không phải lý do chọn theme: Military thấp vì vài game có lượt tải khổng lồ, Fantasy cao vì TD và 4X nằm chung nhóm. Chốt theme bằng IPM và CPI của chính creative.</p>
-        <p>Constraint của team cũng cần có, để đưa bảng 5.6 qua cửa chặn.</p>
-      </div>
-      <div>
-        <span class="mono">Cần lấp các ô I</span>
-        <h3>Chơi thật 3–5 ngày, kèm review mining.</h3>
-        <p>Ba câu cần trả lời: bot ở trận 2–6 có bị chê là quá dở không, gió có gây churn ở trận 3–5 không, và luật hòa tính thua có bị chê không.</p>
-        <p>Kết quả quay về tab MDA: Competition ở 1.4 và skill barrier của K1 ở 1.3.</p>
-      </div>
     </div>
   </section>
 
@@ -1251,7 +1232,7 @@
   <header>
     <div class="mono">Doc nội bộ &nbsp;|&nbsp; Quan sát</div>
     <h1>AI đối thủ</h1>
-    <p class="lead">Bot không giỏi lên đều. Nó đổi qua 3 mức theo tiến độ: <b>Easy cố ý bắn hỏng 100% số phát</b>, Medium 25%, Smart 5%. Độ khó thật chỉ bắt đầu ở arena 4, khi Smart AI và độ khó theo chuỗi thắng / thua <b>cùng bật một lúc</b>.</p>
+    <p class="lead">Bot không giỏi lên đều. Nó đổi qua 3 mức theo tiến độ: <b>Easy cố ý ngắm lệch mọi phát</b>, Medium lệch 25% số phát, Smart 5%. Độ khó thật chỉ bắt đầu ở arena 4, khi Smart AI và độ khó theo chuỗi thắng / thua <b>cùng bật một lúc</b>.</p>
   </header>
 
   <section id="s6">
@@ -1264,14 +1245,14 @@
     <h3 class="sub-title sub-block" id="s6-1"><span class="no">6.1</span>Ba mức AI: chọn theo số trận đã chơi và arena</h3>
     <div class="table-wrap vt">
       <table>
-        <thead><tr><th>Mức</th><th>Dùng khi</th><th>Bắn hỏng</th><th>Chọn mục tiêu</th><th>Đổi hero</th></tr></thead>
+        <thead><tr><th>Mức</th><th>Dùng khi</th><th>Phát ngắm lệch</th><th>Chọn mục tiêu</th><th>Đổi hero</th></tr></thead>
         <tbody>
           <tr><td>Easy</td><td>5 trận đấu bot đầu tiên (trận 2–6), arena 1–3</td><td class="lean"><span class="key">100%</span></td><td>Một hero thấy được, chọn ngẫu nhiên. Không thấy hero nào thì bắn một ô ngẫu nhiên</td><td>Lượt nào cũng đổi, tối đa 2 lần. Luôn ưu tiên hero mà thành người chơi không có</td></tr>
           <tr><td>Medium</td><td>Từ trận 7, arena 1–3</td><td class="lean">25%</td><td>Như Easy. Khi bắn bằng BirdBomber thì ngắm cao hơn 1.5</td><td>40% có đổi, tối đa 3 lần. 80% ưu tiên hero mà thành người chơi không có</td></tr>
           <tr><td>Smart</td><td>Từ arena 4</td><td class="lean">5%</td><td>Chấm điểm từng hero và từng ô, xem 6.3</td><td>40% có đổi, tối đa 3 lần. 50% ưu tiên hero mà thành người chơi không có</td></tr>
         </tbody>
       </table>
-      <p class="table-note"><b>Bắn hỏng là cố ý.</b> Bot tính sẵn quỹ đạo, có cả gió. Phát thường chỉ lệch nhỏ quanh điểm ngắm (cao 0 → 0.6, ngang ±0.5). Phát bắn hỏng bị đẩy lệch ngang ±6, sâu ±4, cao −1.5 → +2.5. Một tầng thành cao 5, nên lệch 6 đủ để trượt sang ô khác hoặc trượt hẳn.</p>
+      <p class="table-note"><b>Ngắm lệch là cố ý.</b> Bot tính sẵn quỹ đạo, có cả gió. Phát thường chỉ lệch nhỏ quanh điểm ngắm (cao 0 → 0.6, ngang ±0.5). Phát ngắm lệch bị đẩy thêm ngang ±6, sâu ±4, cao −1.5 → +2.5. Một tầng thành cao 5, nên lệch 6 đủ để trượt sang ô khác hoặc trượt hẳn. Độ lệch là ngẫu nhiên, nên phát lệch ít vẫn có thể trúng thành.</p>
     </div>
 
     <!-- ---------- 6.2 ---------- -->
@@ -1282,7 +1263,7 @@
         <tbody>
           <tr><td>1. Nghĩ</td><td>Chờ trước khi làm gì</td><td>Easy 0.3 giây, Medium và Smart 0.8 giây</td></tr>
           <tr><td>2. Đổi hero</td><td>Đổi theo tỉ lệ ở 6.1</td><td>BirdBomber và Astromancer không bắn 2 lượt liền. Vừa bắn BirdBomber thì lượt sau buộc đổi hero. Không chọn hero đang bị đóng băng</td></tr>
-          <tr><td>3. Tung spell</td><td>Tung trước khi ngắm</td><td>20% số lượt. Lượt bắn hỏng thì không tung. Chỉ mang spell mà người chơi đã mở</td></tr>
+          <tr><td>3. Tung spell</td><td>Tung trước khi ngắm</td><td>20% số lượt. Lượt ngắm lệch thì không tung. Chỉ mang spell mà người chơi đã mở</td></tr>
           <tr><td>4. Chọn mục tiêu</td><td>Chọn điểm ngắm</td><td>Theo mức AI ở 6.1</td></tr>
           <tr><td>5. Ngắm giả người</td><td>Kéo nòng qua vài điểm quanh mục tiêu rồi mới khóa</td><td>Nhìn quanh 2–5 điểm. 35% quét trái phải, 35% chỉ chỉnh nhẹ, 20% bỏ qua bước nhìn quanh</td></tr>
           <tr><td>6. Bắn</td><td>Bắn theo quỹ đạo đã tính</td><td>Có tính gió</td></tr>
@@ -1334,24 +1315,24 @@
     </div>
 
     <!-- ---------- 6.5 ---------- -->
-    <h3 class="sub-title sub-block" id="s6-5"><span class="no">6.5</span>Đường độ khó: phẳng ở arena 1–3, nhảy một bậc lớn ở arena 4</h3>
+    <h3 class="sub-title sub-block" id="s6-5"><span class="no">6.5</span>Đường độ khó: đổi bậc ở trận 7 và arena 4, bậc arena 4 bật nhiều thứ cùng lúc</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Giai đoạn</th><th>Bắn hỏng</th><th>Mục tiêu</th><th>Độ khó theo chuỗi</th><th>Luật nâng cao</th></tr></thead>
+        <thead><tr><th>Giai đoạn</th><th>Phát ngắm lệch</th><th>Mục tiêu</th><th>Độ khó theo chuỗi</th><th>Luật nâng cao</th></tr></thead>
         <tbody>
           <tr><td>Trận 2–6</td><td>100%</td><td>Ngẫu nhiên</td><td>Tắt</td><td>Tắt</td></tr>
           <tr><td>Trận 7 → hết arena 3</td><td>25%</td><td>Ngẫu nhiên</td><td>Tắt</td><td>Tắt</td></tr>
           <tr><td>Từ arena 4</td><td>5%</td><td>Chấm điểm, nghiêng về kéo sập</td><td>Bật</td><td>Bật khi thắng chuỗi</td></tr>
         </tbody>
       </table>
-      <p class="table-note">Số bắn hỏng, mục tiêu, độ khó theo chuỗi, luật nâng cao là <span class="fi f">F</span>. Cảm nhận của người chơi ở arena 4 là <span class="fi i">I</span>, cần review mining hoặc retention theo arena để kiểm.</p>
+      <p class="table-note">Tỉ lệ ngắm lệch, mục tiêu, độ khó theo chuỗi, luật nâng cao là <span class="fi f">F</span>. Cảm nhận của người chơi ở arena 4 là <span class="fi i">I</span>, cần review mining hoặc retention theo arena để kiểm.</p>
     </div>
 
     <div class="verdict">
       <div>
         <span class="mono">Phát hiện chính &nbsp;·&nbsp; F luật, I cảm nhận</span>
         <h3>Ba thay đổi dồn vào cùng một mốc arena 4.</h3>
-        <p>Ở arena 4, bắn hỏng giảm từ 25% xuống 5%, bot chuyển từ bắn ngẫu nhiên sang chấm điểm, và độ khó theo chuỗi bắt đầu chạy. Ba thứ này bật cùng lúc, nên đây nhiều khả năng là chỗ người chơi thấy game <b>bỗng khó lên</b> <span class="fi i">I</span>.</p>
+        <p>Ở arena 4, tỉ lệ ngắm lệch giảm từ 25% xuống 5%, bot chuyển từ bắn ngẫu nhiên sang chấm điểm, và độ khó theo chuỗi bắt đầu chạy. Ba thứ này bật cùng lúc, nên đây nhiều khả năng là chỗ người chơi thấy game <b>bỗng khó lên</b> <span class="fi i">I</span>.</p>
         <p>Trước arena 4, người chơi thắng gần như chắc chắn. Vì vậy Competition ở tab MDA mục 1.4 chưa xuất hiện thật trong giai đoạn đầu.</p>
       </div>
       <div>
